@@ -1,0 +1,24 @@
+// $primary: #14148b;
+// $success: #79CC7E;
+
+// @import "node_modules/bootstrap/scss/bootstrap";
+// @import "@/css/main"
+
+// @import 'node_modules/bootstrap/scss/bootstrap-reboot.scss'; // Bootstrap Reboot collection
+// @import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss'; // Bootstrap Breakpoints mixin
+
+// // FONTS LOAD SECTION
+
+// @mixin font($fname, $fstyle, $fweight, $furl) {
+//   @font-face {
+//     font-family: $fname;
+//     font-style: $fstyle;
+//     font-weight: $fweight;
+//     src: url($furl) format('woff2');
+//   }
+// }
+
+// @include font('roboto-oh5', normal, 400, '../../fonts/roboto-regular-webfont.woff2');
+// @include font('roboto-oh5', italic, 400, '../../fonts/roboto-italic-webfont.woff2');
+// @include font('roboto-oh5', normal, 700, '../../fonts/roboto-bold-webfont.woff2');
+// @include font('roboto-oh5', italic, 700, '../../fonts/roboto-bolditalic-webfont.woff2');
