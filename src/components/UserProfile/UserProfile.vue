@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row g-0">
     <div class="row lol" style="padding: 12px;">
       <a class="btn btn-outline-success btn-lg " href="#" id="add-button">+ Новый рецепт</a>
     </div>

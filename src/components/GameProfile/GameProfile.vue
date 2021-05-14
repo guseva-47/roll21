@@ -46,7 +46,7 @@
           <select 
             id="system" 
             class="form-select btn-secondary ff" 
-            v-model="f"
+            v-model="system"
           >
             <option v-for="item in ['1', '2']" :key="item" class="btn-secondary">
               {{ item }}
@@ -66,6 +66,7 @@ export default defineComponent({
   data() {
     return {
       f: true,
+      system: "" as string,
     }
   }
 

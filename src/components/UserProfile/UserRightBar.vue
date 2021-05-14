@@ -11,11 +11,20 @@
           <!-- <p>Комментарий заказчика</p> -->
       </div>
     </div>
-    <div class="person-block">
-      <FrendRowBar />
-      <FrendRowBar />
-      <FrendRowBar />
-      <FrendRowBar />
+
+    <div class="person-block row g-0">
+      <div class="col-lg-12 col-md-4 col-6">
+        <FrendRowBar />
+      </div>
+      <div class="col-lg-12 col-md-4 col-6">
+        <FrendRowBar />
+      </div>
+      <div class="col-lg-12 col-md-4 col-6">
+        <FrendRowBar />
+      </div>
+      <div class="col-lg-12 col-md-4 col-6">
+        <FrendRowBar />
+      </div>
     </div>
   </div>
 </template>

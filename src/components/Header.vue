@@ -1,5 +1,6 @@
 <template>
       <header>
+        <!-- TODO  хедер и футтер заканчиваются не по одной линии справа. верх вылезает вправо-->
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container-xxl">
             <a class="navbar-brand" href="#">Tabletop</a>
