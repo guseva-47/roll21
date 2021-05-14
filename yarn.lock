@@ -977,6 +977,318 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
+"@pixi/accessibility@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/accessibility/-/accessibility-5.3.9.tgz#c091ce48f5ab46a3026f46bc86cf8c09329a611e"
+  integrity sha512-Y0+gjfq1ZJl4O6hC6O9KMCLvjAwSy3p9motZvfYs2x2QNLPI9IAafjn2qnM2Cp/Q86ySvqD6DCvLJZ/ni9tyVQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/app@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/app/-/app-5.3.9.tgz#d21e9e0cc17671ca383652a7634671f40ffdd550"
+  integrity sha512-5SDMFjCqX0TCMgjuDxLRNpphpIUC3mtTatw06PGf9OUgxMuRwy/PqamYArFosIhnoU4R9ubeo4dE1tQaeYniQw==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+
+"@pixi/constants@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/constants/-/constants-5.3.9.tgz#587bed7f110975b0b0ac628e6b4411aa582f7e00"
+  integrity sha512-ItYz91qkQdklsjVMHFBPjxE2qiuhv8M8A1c+j3oSBIvRR2/usjwJ24ppYe9TeISa/ONmM24EIW9u9X8WZ0fF8g==
+
+"@pixi/core@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/core/-/core-5.3.9.tgz#d7c615699b2cc383ed842d9350a291a13bc70b10"
+  integrity sha512-a2W/tqbMGeaNgkcZ2F4930W6OSFwZcOza/z0U9/Pw1JQRgzpJw1ZjZWM+XP0zI0BYcAI+jQUqleBxg5lp3L9HQ==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/runner" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/ticker" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/display@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/display/-/display-5.3.9.tgz#c6799c148cef516f7218f1463f1ceac8ee00e28d"
+  integrity sha512-5oNJjZp2if+cm1Wc19OjnO5yDmJozg0ctcxonT7YV2zMkfYc3M1C8svgpkKq5zJILjwSKio2lYbTa/6pGSgtBA==
+  dependencies:
+    "@pixi/math" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/extract@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/extract/-/extract-5.3.9.tgz#64304bf924311d1ec130ddf421aa1f4ac5f7b144"
+  integrity sha512-h74fAPyiRgZudysbd1Jss3uKtl89wprRxRVbTQHWzSeu382qBGPXONHmT7RIQRk4hRMAASxeWltibVtKMphelQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/filter-alpha@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-alpha/-/filter-alpha-5.3.9.tgz#409e322f4466ddfd0ce364511f33be3b0437d45f"
+  integrity sha512-qfPJeKViLl/55dGzqX7qzTXy7XLIURw8kOdr89BssoQnGLosI7gEcKXMk2ib+tKk2KYzlGCScmcx1TU+sC++xQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+
+"@pixi/filter-blur@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-blur/-/filter-blur-5.3.9.tgz#99bba22b57d36bc2f2f75e7f46fddfd0956405d6"
+  integrity sha512-Xr5/irGK70oF4Xw3wabeKecq9oFTZDJ/oKPKotFgG+Dxiy2DmBh+oHpOsteCJ18QLHvKLrr0AJt6AkpoNFcKnQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/settings" "5.3.9"
+
+"@pixi/filter-color-matrix@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-color-matrix/-/filter-color-matrix-5.3.9.tgz#26914ce45cfebc98067435fd42755f4454a28877"
+  integrity sha512-02Bj4TPhLl5PneZh9eaAhJgWjKv4HfR/4+gJxzp4/Es61aW/fz+38DD5JywmXNDV39RnUhLpvnMrbqYzdHXZIw==
+  dependencies:
+    "@pixi/core" "5.3.9"
+
+"@pixi/filter-displacement@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-displacement/-/filter-displacement-5.3.9.tgz#1bd2c7ef006207664de5f644bffcc71a10d58716"
+  integrity sha512-VWwk1jyrS2VMprzknaqA9PqNda7TS2qp3tAVt97qadM5sRE0LzkhYvd+w4/b2TzvrHcu+0q5odmKuFuiSSE51Q==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/math" "5.3.9"
+
+"@pixi/filter-fxaa@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-fxaa/-/filter-fxaa-5.3.9.tgz#fe63023c9f0bd63bed32ad91f54976437b5002f1"
+  integrity sha512-fuOADEHVn9XVyo8o88TiPgHRQ7P3NpGkQmS95mFW9SIP//QuQ8ikj3yYuBKtNM6TsCsJe7/bTv4i7uX8l00kVQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+
+"@pixi/filter-noise@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/filter-noise/-/filter-noise-5.3.9.tgz#7f670fa2a838358078fda9e0b9eca58c44071321"
+  integrity sha512-FtVbg49p0DLoaW2ua4no8ACgBJkip5yVYDqBkuZIPUP6PrXssCSjpU0w060TtcL6qQI9GpUqOBxffN3Qhn+VHg==
+  dependencies:
+    "@pixi/core" "5.3.9"
+
+"@pixi/graphics@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/graphics/-/graphics-5.3.9.tgz#bf9a8e447aa58b75326291a961e593dce4852d87"
+  integrity sha512-JWzMabJI4iy3Wynv26VcgMvTN/QH6w2qoYS2WQZlA9YYPLrdIpRoArHUlSU4bAoc9AqrTuOI6Xd6xHZspLH36A==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/interaction@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/interaction/-/interaction-5.3.9.tgz#b748d6e0b8517c50854a0aeea90ffa5b788173fe"
+  integrity sha512-sDxS6/MXY3zhIJKbKCwHMhO7+2hbXGydIkZtn6LtpKN2X19z69M/C9Ka+5ckPfbmrKf25ohjvcGS8xWqf0sNOw==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/ticker" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/loaders@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/loaders/-/loaders-5.3.9.tgz#848cad2e545f42bce3f9e841b550f32863b4946e"
+  integrity sha512-qepjJ/aup+A5do26yj13Ma3z8kKp+HhkQL2F4uPeIm019DytO8vfKntjmNzU7obw2FMKbn1PRUmX8METLC6DOA==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/utils" "5.3.9"
+    resource-loader "^3.0.1"
+
+"@pixi/math@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/math/-/math-5.3.9.tgz#6a7debdaecb82f54e05d2aa2c47057757009be54"
+  integrity sha512-Ka5ypD22Te+DEx2572Zsct7mYnbl0em+lzvJBdbQnddCfvW9JBILAwULFa4Z8KxeeLT2PMCgp1wxwG1yQaiS6A==
+
+"@pixi/mesh-extras@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/mesh-extras/-/mesh-extras-5.3.9.tgz#c2219fee9c963b9291af57331bf83e2bc3f07991"
+  integrity sha512-Xl7rXSjS048r8x1ZJ0s0DmKARqUhUPLp0VVhZho38IZKRFyEj1dkiOFYkamovxrVYdmZ12GvhdS74NSKiX1wEA==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/mesh" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/mesh@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/mesh/-/mesh-5.3.9.tgz#1c01af2b073b7e96ccce2ff809e495accd4e54cd"
+  integrity sha512-fyKlk1AKJHwQ/0u+4+4nxScstreH05yHmCyDVM2fc1e9VbJy2Z7ZOueZCgguRfJrDvMqMqtkfKTWTzDvcADsYQ==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/mixin-cache-as-bitmap@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/mixin-cache-as-bitmap/-/mixin-cache-as-bitmap-5.3.9.tgz#a69fc20cb05eab0d4c09620195a652ccf4a13ffe"
+  integrity sha512-udmyHkc8FIRlHzAg29kmvSFlbkO7Q9B3G3Oxiw5g/c8L2HE45iXpasor7o0gSAz90+gwWxieBK60uDKr4vX8sQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/mixin-get-child-by-name@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/mixin-get-child-by-name/-/mixin-get-child-by-name-5.3.9.tgz#a5feb5022f9691b9c9a5221da512202c215bf77f"
+  integrity sha512-rGjPrKSdr84iHMxQp26ZHYEc1BStLsNsxyQLcKCxOGZzzzP7g2X8Wwsw66Ie51U/ue4OpcxcUoGOlh88hVJtNw==
+  dependencies:
+    "@pixi/display" "5.3.9"
+
+"@pixi/mixin-get-global-position@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/mixin-get-global-position/-/mixin-get-global-position-5.3.9.tgz#a8c3763ba7c5da119d2c66ab9f6ed6dbb426a1e0"
+  integrity sha512-HPhb7gI3XnO8bJonqXYt/dEesh7TD6EkLHzKq8d7GdrB+JebfK4RMwgbL6vliVQianmTzl2J/1NgZ96fKg8HAw==
+  dependencies:
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+
+"@pixi/particles@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/particles/-/particles-5.3.9.tgz#9eacf15a7803d039474d889844a3f252213bdaca"
+  integrity sha512-NAB3to0Om5LicwUpMeMsjxaXZYXi9mdTOgucXirf7I+RKPEp8wZg9g10esXjFjCryQYSlr2YPTpfANiK2pzdJw==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/polyfill@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/polyfill/-/polyfill-5.3.9.tgz#f9ca05a2239c5886587f97b8bf4b2fa2b340e630"
+  integrity sha512-y5DLSWtIMafET1o4C1xfNyXvZGC5HZLqRoQ7ypmvjcn7owk2C+61KPV0rrH5kyK5ncWaI6utnoVyvivo/Shp8A==
+  dependencies:
+    es6-promise-polyfill "^1.2.0"
+    object-assign "^4.1.1"
+
+"@pixi/prepare@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/prepare/-/prepare-5.3.9.tgz#083cd7c89ee404457cefebac58f72bab359c0c1c"
+  integrity sha512-ykb5YI06rYPQm5ZC8ymmVprjyno4WskRdr8DRuq/z8008ZqL1+YN0Yw/8v0aXpOdh43uPYUPHvHj77tLuV8BRQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/graphics" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/text" "5.3.9"
+    "@pixi/ticker" "5.3.9"
+
+"@pixi/runner@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/runner/-/runner-5.3.9.tgz#f0f5702c2df30f4934dffccd9ed4c615172acca7"
+  integrity sha512-AN36mZivER12D1wmjoAf7scjK1JLO/uA9PyzfAResccafkev4W/PtjAYODSYUbNf3SnxvQMlpdVK7NHSwnxifQ==
+
+"@pixi/settings@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/settings/-/settings-5.3.9.tgz#3d4b8c65e7a6d08941209bc7ee1311d120c0a149"
+  integrity sha512-4moUuiDOibv/Fm2QVUg2TUL/6ZmYEi6OSifV4OlzMkaoyEtpc//4YC6nm+a0zDoQ2SxCWn9ADUexkNGsKNwi6Q==
+  dependencies:
+    ismobilejs "^1.1.0"
+
+"@pixi/sprite-animated@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/sprite-animated/-/sprite-animated-5.3.9.tgz#c677a15aae9c9510abbaf48d5b921cb327817742"
+  integrity sha512-8s4Y8eHMbzwDX62LuvW0E8TV5mNnLcrqYGXxh5AkY5pp2b33ob9LD6ajs9vfVAaAXLwCjNCWy6N8K7jB07NzhQ==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/ticker" "5.3.9"
+
+"@pixi/sprite-tiling@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/sprite-tiling/-/sprite-tiling-5.3.9.tgz#5166435001c7bbf4d03cbf9e4d24fdb598f72649"
+  integrity sha512-3KgsYJcdR4VCHNa9vdsbrJOpAFg9ggNvGhHfU2zrZqv54b2NK1ieBLgFLXsefB2/1SYpgWjQUQ9wWzoc8Z5NXQ==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/sprite@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/sprite/-/sprite-5.3.9.tgz#46cc41c64129a03bdbc4c95a4a9b0725ddf8acdc"
+  integrity sha512-NCBl53D3OGuXyBzsDY5j4tzyMhXo9x3B9tGkZTaPamy6LFuJAHKz1rJLCft0dhQG0mCRihDHA7RVJF6t2NcQag==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/spritesheet@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/spritesheet/-/spritesheet-5.3.9.tgz#33983aeb1fd7e61ee8841d7f60d48ca3c3805971"
+  integrity sha512-N7wK8qQMI8rBpLXO1QalA9HOJ8j0+jM/ZYl2JWewo8rbxKpXTllOazr8QdSaofxAhCCsmG2QBzfR//tZS+WfGg==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/loaders" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/text-bitmap@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/text-bitmap/-/text-bitmap-5.3.9.tgz#c2e1de4871078464a244fbfda10843f0e9f196d3"
+  integrity sha512-s33Y+iiiLIIe4d9Tevn8VQ9HZfmpud0GU1OdoWRhMAKiXXsoI12e+hzVS6bOS5rsD0iyyS7Bcs4zxbBezSU24A==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/loaders" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/mesh" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/text" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/text@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/text/-/text-5.3.9.tgz#15fbd2a197dd65e8e26cc2d7fc91d59b9066e3be"
+  integrity sha512-QT1XRqLpaN0IsIHCbL8hgvRQSoHTodgvjeMCfAbp8KC0fLYxxKaD7RIU02Ito1Vl0cGON65/lg/qQMegQocgsg==
+  dependencies:
+    "@pixi/core" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/utils" "5.3.9"
+
+"@pixi/ticker@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/ticker/-/ticker-5.3.9.tgz#f124cc2d9c06872d8fca4efbc20755df18284351"
+  integrity sha512-t7hc72X70lAp3H+m5BY6fS3U6XOdMqQrv6+5z4vfqBBr1lOuJGWUhgIpGXk0qhOl4F88LQlXkOsfk/qqUN+NCQ==
+  dependencies:
+    "@pixi/settings" "5.3.9"
+
+"@pixi/utils@5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@pixi/utils/-/utils-5.3.9.tgz#6077c79b268496e73fe2715c68c9139b7325ef9e"
+  integrity sha512-yvwaRo9VtSTAQsEFkYHjz12h3eW5Ww8Emk6XunEOiGPlByvs7AUsDpDGcym7DcKlePszHBSDPOj6gW56pZLzdA==
+  dependencies:
+    "@pixi/constants" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    earcut "^2.1.5"
+    eventemitter3 "^3.1.0"
+    url "^0.11.0"
+
 "@popperjs/core@^2.9.2":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
@@ -1001,6 +1313,11 @@
   version "1.3.1"
   resolved "https://registry.npm.taobao.org/@types/anymatch/download/@types/anymatch-1.3.1.tgz?cache=0&sync_timestamp=1613378060592&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fanymatch%2Fdownload%2F%40types%2Fanymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha1-M2utwb7sudrMOL6izzKt9ieoQho=
+
+"@types/assert@^1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@types/assert/-/assert-1.5.4.tgz#87ebe83645631e188e8ec2de4f173dc39ab6f77d"
+  integrity sha512-CaFVW21Ulu0J9sUaEWJjwmhkDkeoxa4fniVSERzZC13sU9v8NNM2lMlkfZZv60j47D+qDt0Lyo8skVP3CTXUdA==
 
 "@types/body-parser@*":
   version "1.19.0"
@@ -1937,6 +2254,11 @@ arr-union@^3.1.0:
   resolved "https://registry.npm.taobao.org/arr-union/download/arr-union-3.1.0.tgz#e39b09aea9def866a8f206e288af63919bae39c4"
   integrity sha1-45sJrqne+Gao8gbiiK9jkZuuOcQ=
 
+array-filter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/array-filter/-/array-filter-1.0.0.tgz#baf79e62e6ef4c2a4c0b831232daffec251f9d83"
+  integrity sha1-uveeYubvTCpMC4MSMtr/7CUfnYM=
+
 array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/array-flatten/download/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
@@ -1999,6 +2321,16 @@ assert@^1.1.1:
     object-assign "^4.1.1"
     util "0.10.3"
 
+assert@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/assert/-/assert-2.0.0.tgz#95fc1c616d48713510680f2eaf2d10dd22e02d32"
+  integrity sha512-se5Cd+js9dXJnu6Ag2JFc00t+HmHOen+8Q+L7O9zI0PqQXr20uk2J0XQqMxZEeo5U50o8Nvmmx7dZrl+Ufr35A==
+  dependencies:
+    es6-object-assign "^1.1.0"
+    is-nan "^1.2.1"
+    object-is "^1.0.1"
+    util "^0.12.0"
+
 assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/assign-symbols/download/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
@@ -2053,6 +2385,13 @@ autoprefixer@^9.8.6:
     num2fraction "^1.2.2"
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
+
+available-typed-arrays@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.2.tgz#6b098ca9d8039079ee3f77f7b783c4480ba513f5"
+  integrity sha512-XWX3OX8Onv97LMk/ftVyBibpGwY5a8SmuxZPzeOxqmuEqUCOM9ZE+uIaD1VNJ5QnvU2UQusvmKbuM1FR8QWGfQ==
+  dependencies:
+    array-filter "^1.0.0"
 
 aws-sign2@~0.7.0:
   version "0.7.0"
@@ -3515,6 +3854,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+earcut@^2.1.5:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.2.tgz#41b0bc35f63e0fe80da7cddff28511e7e2e80d11"
+  integrity sha512-eZoZPPJcUHnfRZ0PjLvx2qBordSiO8ofC3vt+qACLM95u+4DovnbYNpQtJh0DNsWj8RnxrQytD4WA8gj5cRIaQ==
+
 easy-stack@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/easy-stack/download/easy-stack-1.0.1.tgz?cache=0&sync_timestamp=1605129437999&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feasy-stack%2Fdownload%2Feasy-stack-1.0.1.tgz#8afe4264626988cabb11f3c704ccd0c835411066"
@@ -3628,7 +3972,7 @@ error-stack-parser@^2.0.2:
   dependencies:
     stackframe "^1.1.1"
 
-es-abstract@^1.17.2, es-abstract@^1.18.0-next.2:
+es-abstract@^1.17.2, es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2:
   version "1.18.0"
   resolved "https://registry.npm.taobao.org/es-abstract/download/es-abstract-1.18.0.tgz#ab80b359eecb7ede4c298000390bc5ac3ec7b5a4"
   integrity sha1-q4CzWe7Lft5MKYAAOQvFrD7HtaQ=
@@ -3658,6 +4002,16 @@ es-to-primitive@^1.2.1:
     is-callable "^1.1.4"
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
+
+es6-object-assign@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
+  integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
+
+es6-promise-polyfill@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/es6-promise-polyfill/-/es6-promise-polyfill-1.2.0.tgz#f38925f23cb3e3e8ce6cda8ff774fcebbb090cde"
+  integrity sha1-84kl8jyz4+jObNqP93T867sJDN4=
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -3835,6 +4189,11 @@ event-pubsub@4.3.0:
   version "4.3.0"
   resolved "https://registry.npm.taobao.org/event-pubsub/download/event-pubsub-4.3.0.tgz?cache=0&sync_timestamp=1606361788815&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fevent-pubsub%2Fdownload%2Fevent-pubsub-4.3.0.tgz#f68d816bc29f1ec02c539dc58c8dd40ce72cb36e"
   integrity sha1-9o2Ba8KfHsAsU53FjI3UDOcss24=
+
+eventemitter3@^3.1.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
+  integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
 eventemitter3@^4.0.0:
   version "4.0.7"
@@ -4206,6 +4565,11 @@ for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/for-in/download/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
+
+foreach@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+  integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
 
 forever-agent@~0.6.1:
   version "0.6.1"
@@ -5154,6 +5518,11 @@ is-fullwidth-code-point@^3.0.0:
   resolved "https://registry.npm.taobao.org/is-fullwidth-code-point/download/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha1-8Rb4Bk/pCz94RKOJl8C3UFEmnx0=
 
+is-generator-function@^1.0.7:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/is-generator-function/-/is-generator-function-1.0.9.tgz#e5f82c2323673e7fcad3d12858c83c4039f6399c"
+  integrity sha512-ZJ34p1uvIfptHCN7sFTjGibB9/oBg17sHqzDLfuwhvmN/qLVvIQXRQ8licZQ35WJ8KuEQt/etnnzQFI9C9Ue/A==
+
 is-glob@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/is-glob/download/is-glob-3.1.0.tgz?cache=0&sync_timestamp=1598237815612&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-glob%2Fdownload%2Fis-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
@@ -5167,6 +5536,14 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
   integrity sha1-dWfb6fL14kZ7x3q4PEopSCQHpdw=
   dependencies:
     is-extglob "^2.1.1"
+
+is-nan@^1.2.1:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/is-nan/-/is-nan-1.3.2.tgz#043a54adea31748b55b6cd4e09aadafa69bd9e1d"
+  integrity sha512-E+zBKpQ2t6MEo1VsonYmluk9NxGrbzpeeLC2xIViuO2EjU2xsXsBPwTr3Ykv9l08UYEVEdWeRZNouaZqF6RN0w==
+  dependencies:
+    call-bind "^1.0.0"
+    define-properties "^1.1.3"
 
 is-negative-zero@^2.0.1:
   version "2.0.1"
@@ -5266,6 +5643,17 @@ is-symbol@^1.0.2, is-symbol@^1.0.3:
   dependencies:
     has-symbols "^1.0.2"
 
+is-typed-array@^1.1.3:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/is-typed-array/-/is-typed-array-1.1.5.tgz#f32e6e096455e329eb7b423862456aa213f0eb4e"
+  integrity sha512-S+GRDgJlR3PyEbsX/Fobd9cqpZBuvUS+8asRqYDMLCb2qMzt1oz5m5oxQCxOgUDxiWsOVNi4yaF+/uvdlHlYug==
+  dependencies:
+    available-typed-arrays "^1.0.2"
+    call-bind "^1.0.2"
+    es-abstract "^1.18.0-next.2"
+    foreach "^2.0.5"
+    has-symbols "^1.0.1"
+
 is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/is-typedarray/download/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
@@ -5297,6 +5685,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+
+ismobilejs@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ismobilejs/-/ismobilejs-1.1.1.tgz#c56ca0ae8e52b24ca0f22ba5ef3215a2ddbbaa0e"
+  integrity sha512-VaFW53yt8QO61k2WJui0dHf4SlL8lxBofUuUmwBo0ljPk0Drz2TiuDW4jo3wDcv41qy/SxrJ+VAzJ/qYqsmzRw==
 
 isobject@^2.0.0:
   version "2.1.0"
@@ -5836,6 +6229,11 @@ mini-css-extract-plugin@^0.9.0:
     normalize-url "1.9.1"
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
+
+mini-signals@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/mini-signals/-/mini-signals-1.2.0.tgz#45b08013c5fae51a24aa1a935cd317c9ed721d74"
+  integrity sha1-RbCAE8X65RokqhqTXNMXye1yHXQ=
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
@@ -6419,6 +6817,11 @@ parse-json@^5.0.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
+parse-uri@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/parse-uri/-/parse-uri-1.0.3.tgz#f3c24a74907a4e357c1741e96ca9faadecfd6db5"
+  integrity sha512-upMnGxNcm+45So85HoguwZTVZI9u11i36DdxJfGF2HYWS2eh3TIx7+/tTi7qrEq15qzGkVhsKjesau+kCk48pA==
+
 parse5-htmlparser2-tree-adapter@^6.0.0:
   version "6.0.1"
   resolved "https://registry.npm.taobao.org/parse5-htmlparser2-tree-adapter/download/parse5-htmlparser2-tree-adapter-6.0.1.tgz?cache=0&sync_timestamp=1596090153652&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fparse5-htmlparser2-tree-adapter%2Fdownload%2Fparse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
@@ -6562,6 +6965,46 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npm.taobao.org/pinkie/download/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
+
+pixi.js@5.3.9:
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-5.3.9.tgz#073fdf4bfbd644b128555bc17e90f62a2d3afa6d"
+  integrity sha512-MLczwbhFmFBXImy9TlUbjnQb8nQK3Zez/UHs2z3cBqXDLx9wSZ0kwJbeY4XAWuJNy3WeZtqKeDoteonNaDxMUQ==
+  dependencies:
+    "@pixi/accessibility" "5.3.9"
+    "@pixi/app" "5.3.9"
+    "@pixi/constants" "5.3.9"
+    "@pixi/core" "5.3.9"
+    "@pixi/display" "5.3.9"
+    "@pixi/extract" "5.3.9"
+    "@pixi/filter-alpha" "5.3.9"
+    "@pixi/filter-blur" "5.3.9"
+    "@pixi/filter-color-matrix" "5.3.9"
+    "@pixi/filter-displacement" "5.3.9"
+    "@pixi/filter-fxaa" "5.3.9"
+    "@pixi/filter-noise" "5.3.9"
+    "@pixi/graphics" "5.3.9"
+    "@pixi/interaction" "5.3.9"
+    "@pixi/loaders" "5.3.9"
+    "@pixi/math" "5.3.9"
+    "@pixi/mesh" "5.3.9"
+    "@pixi/mesh-extras" "5.3.9"
+    "@pixi/mixin-cache-as-bitmap" "5.3.9"
+    "@pixi/mixin-get-child-by-name" "5.3.9"
+    "@pixi/mixin-get-global-position" "5.3.9"
+    "@pixi/particles" "5.3.9"
+    "@pixi/polyfill" "5.3.9"
+    "@pixi/prepare" "5.3.9"
+    "@pixi/runner" "5.3.9"
+    "@pixi/settings" "5.3.9"
+    "@pixi/sprite" "5.3.9"
+    "@pixi/sprite-animated" "5.3.9"
+    "@pixi/sprite-tiling" "5.3.9"
+    "@pixi/spritesheet" "5.3.9"
+    "@pixi/text" "5.3.9"
+    "@pixi/text-bitmap" "5.3.9"
+    "@pixi/ticker" "5.3.9"
+    "@pixi/utils" "5.3.9"
 
 pkg-dir@^1.0.0:
   version "1.0.0"
@@ -7403,6 +7846,14 @@ resolve@^1.10.0, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.3.2:
   dependencies:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
+
+resource-loader@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/resource-loader/-/resource-loader-3.0.1.tgz#33355bb5421e2994f59454bbc7f6dbff8df06d47"
+  integrity sha512-fBuCRbEHdLCI1eglzQhUv9Rrdcmqkydr1r6uHE2cYHvRBrcLXeSmbE/qI/urFt8rPr/IGxir3BUwM5kUK8XoyA==
+  dependencies:
+    mini-signals "^1.2.0"
+    parse-uri "^1.0.0"
 
 restore-cursor@^2.0.0:
   version "2.0.0"
@@ -8657,6 +9108,18 @@ util@^0.11.0:
   dependencies:
     inherits "2.0.3"
 
+util@^0.12.0:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/util/-/util-0.12.3.tgz#971bb0292d2cc0c892dab7c6a5d37c2bec707888"
+  integrity sha512-I8XkoQwE+fPQEhy9v012V+TSdH2kp9ts29i20TaaDUXsg7x/onePbhFJUExBfv/2ay1ZOp/Vsm3nDlmnFGSAog==
+  dependencies:
+    inherits "^2.0.3"
+    is-arguments "^1.0.4"
+    is-generator-function "^1.0.7"
+    is-typed-array "^1.1.3"
+    safe-buffer "^5.1.2"
+    which-typed-array "^1.1.2"
+
 utila@~0.4:
   version "0.4.0"
   resolved "https://registry.npm.taobao.org/utila/download/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
@@ -8963,6 +9426,19 @@ which-module@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/which-module/download/which-module-2.0.0.tgz#d9ef07dce77b9902b8a3a8fa4b31c3e3f7e6e87a"
   integrity sha1-2e8H3Od7mQK4o6j6SzHD4/fm6Ho=
+
+which-typed-array@^1.1.2:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.4.tgz#8fcb7d3ee5adf2d771066fba7cf37e32fe8711ff"
+  integrity sha512-49E0SpUe90cjpoc7BOJwyPHRqSAd12c10Qm2amdEZrJPCY2NDxaW01zHITrem+rnETY3dwrbH3UUrUwagfCYDA==
+  dependencies:
+    available-typed-arrays "^1.0.2"
+    call-bind "^1.0.0"
+    es-abstract "^1.18.0-next.1"
+    foreach "^2.0.5"
+    function-bind "^1.1.1"
+    has-symbols "^1.0.1"
+    is-typed-array "^1.1.3"
 
 which@^1.2.9:
   version "1.3.1"
