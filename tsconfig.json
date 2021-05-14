@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/components/Profile/Profile.vue", "src/components/UserProfile/UserProfile.vue", "src/components/UserProfile/UserRightBar.vue"  ],
+, "src/components/Profile/Profile.vue", "src/components/UserProfile/UserProfile.vue", "src/components/UserProfile/UserRightBar.vue", "src/components/MainPage/Main.vue"  ],
   "exclude": [
     "node_modules"
   ]

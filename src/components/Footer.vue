@@ -1,6 +1,6 @@
 <template>
-  <div class="footer">
-    foter
+  <div class="footer container-xxl text-end">
+    Tabletop 2021
   </div>
 </template>
 
@@ -14,6 +14,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .footer {
-  background-color: blue;
+  
 }
 </style>

@@ -4,7 +4,8 @@
           <div class="container-xxl">
             <a class="navbar-brand" href="#">Tabletop</a>
             <div class="navbar-nav">
-              <a class="nav-link" href="#">другая станица</a>
+              <i class="bi bi-person text-center p-0 m-0"></i>
+              <a class="nav-link small p-0 m-0" href="#">войти</a>
             </div>
             <!-- <button 
               class="navbar-toggler"
@@ -42,7 +43,7 @@ export default defineComponent({
 
 
 .navbar {
-  background-color: #5f9ea0
+  background-color: #436d6e
 }
 
 </style>

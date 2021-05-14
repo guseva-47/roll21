@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Main from '../components/Main.vue'
+import Main from '../components/MainPage/Main.vue'
 import UserProfile from '../components/UserProfile/UserProfile.vue'
 import TwoColumnTemplate from '../components/TwoColumnTemplate.vue'
 import UserRightBar from '../components/UserProfile/UserRightBar.vue'

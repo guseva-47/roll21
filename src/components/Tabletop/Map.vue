@@ -10,8 +10,6 @@ import { defineComponent } from 'vue';
 import PixiApp from '../../graphic/PixiApp'
 import PixiScene from '../../graphic/scene/PixiScene';
 
-
-
 export default defineComponent({
   name: 'Map',
   data() {
