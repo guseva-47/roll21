@@ -3,7 +3,7 @@
   <div class="card">
     <img class="card-img-top" src="http://placehold.it/70x30" alt="">
     <div class="card-body p-1">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title text-truncate">Зимняя роскошь</h5>
 
       <a href="#" class="btn btn-sm btn-outline-secondary p-1">
         <i class="bi bi-arrow-right viuw"></i>
