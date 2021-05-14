@@ -1,47 +1,34 @@
 <template>
   <div class="">
-      <div class="person-block row">
-      <div class="icon"></div>
+    <div class="person-block row">
+      <div class="col-auto">
+        <a href="one-game.html">
+          <img class="img-fluid rounded mb-3 mb-md-0 avatar" src="http://placehold.it/60x60" alt="">
+        </a>
+      </div>
       <div class="col">
           <p>Иванов Иван</p>
           <!-- <p>Комментарий заказчика</p> -->
       </div>
     </div>
-    <div class="person-block row" >
-        <div class="col">
-            <img class="icon" src="http://placehold.it/100x100" alt="">
-            <div class="">
-                <p> Иванов Иван</p>
-            </div>
-        </div>
-        <div class="col">
-            <img class="icon" src="http://placehold.it/100x100" alt="">
-            <div class="">
-                <p> Иванов Коля</p>
-            </div>
-        </div>
-        <div class="col">
-            <img class="icon" src="http://placehold.it/100x100" alt="">
-            <div class="">
-                <p> Иванова Аня</p>
-            </div>
-        </div>
-        <div class="col">
-            <img class="icon" src="http://placehold.it/100x100" alt="">
-            <div class="">
-                <p> Иванова kjhkjh Аня</p>
-            </div>
-        </div>
-        
+    <div class="person-block">
+      <FrendRowBar />
+      <FrendRowBar />
+      <FrendRowBar />
+      <FrendRowBar />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import FrendRowBar from './FrendRowBar.vue'
 
 export default defineComponent({
-  name: 'RightBar'
+  name: 'RightBar',
+  components: {
+    FrendRowBar
+  }
 })
 </script>
 
@@ -62,8 +49,7 @@ export default defineComponent({
   margin: 5px;
 }
 
-.lol {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.avatar {
+  max-height: 40px;
 }
 </style>

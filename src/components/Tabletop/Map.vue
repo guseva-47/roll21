@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    main page
+  <div class="map">
+    MAp
   </div>
 </template>
 
@@ -8,11 +8,14 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Main',
+  name: 'Map',
 });
 </script>
 
 <style scoped lang="scss">
 
+.map {
+  background-color: #002000;
+}
 
 </style>

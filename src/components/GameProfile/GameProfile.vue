@@ -12,9 +12,9 @@
       >
     </div>
     <div class="">
-      <h3>
-        <textarea class="text-center h3 w-100 form-control-plaintext" id="gameName" rows="1">Суп "Солянка"</textarea>
-      </h3>
+      <h2>
+        <textarea class="text-center h2 w-100 form-control-plaintext" id="gameName" v-bind:rows="1">Суп "Солянка"</textarea>
+      </h2>
       <p class="" id="gameDescription" >
         Суп солянка классическая отлично пойдет на второй-третий день праздника — когда народ  захочет чего-либо горяченького вместо поднадоевших салатов. Чувствуете в себе силы выполнить это пожелание? Тогда вперед! Кстати, приготовление солянки поможет вам реализовать остатки мясной нарезки, которая выглядит не лучшим образом и вряд ли будет съедена в чистом виде.
       </p>
@@ -26,10 +26,35 @@
         Суп солянка классическая отлично пойдет на второй-третий день праздника — когда народ  захочет чего-либо горяченького вместо поднадоевших салатов. Чувствуете в себе силы выполнить это пожелание? Тогда вперед! Кстати, приготовление солянки поможет вам реализовать остатки мясной нарезки, которая выглядит не лучшим образом и вряд ли будет съедена в чистом виде.
       </textarea> -->
     </div>
-
-    <!-- TODO добавить список участников, у которых есть роль, кстати
-              добавить настройки (акордеон подойдет, кмк)
-    -->
+    <h3 class="h3 row accordion-btn">
+      <div 
+        class="btn btn-outline-secondary d-flex justify-content-between"
+        v-bind:class="{'btn-secondary': f}"
+        @click="f = !f"
+      >
+        Настройки
+        <i v-if="!f" class="bi bi-chevron-down"></i>
+        <i v-else class="bi bi-chevron-up"></i>
+      </div>
+    </h3>
+    <div class="accordion-body" v-if="f">
+      <div class="row mb-3 pad">
+        <label for="system" class="col-auto col-form-label">
+          Игровая система:
+        </label>
+        <div class="col-auto">
+          <select 
+            id="system" 
+            class="form-select btn-secondary ff" 
+            v-model="f"
+          >
+            <option v-for="item in ['1', '2']" :key="item" class="btn-secondary">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,6 +62,12 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'RightBar',
+  data() {
+    return {
+      f: true,
+    }
+  }
 
 })
 </script>
@@ -45,6 +76,21 @@ export default defineComponent({
 
 #gameName, #gameDescription {
   color: white;
+}
+.btn-secondary {
+  color: white;
+}
+.accordion-btn {
+  margin: 0;
+}
+.ff {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.accordion-body {
+  background-color: #46464657;
+  margin: 0;
 }
 
 </style>

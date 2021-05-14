@@ -35,6 +35,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
   background-color: #222222;
+  min-height: 100vh;
 }
 
 .wrapper {
