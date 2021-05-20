@@ -6,7 +6,7 @@
         <a class="navbar-brand" href="#">Tabletop</a>
         <div class="navbar-nav">
           <i class="bi bi-person text-center p-0 m-0"></i>
-          <a class="nav-link small p-0 m-0" href="#">войти</a>
+          <a class="nav-link small p-0 m-0" href="#" @click="ping">войти</a>
         </div>
         <!-- <button 
               class="navbar-toggler"
@@ -33,10 +33,21 @@
 </template>
 
 <script>
+import api from "@/AxiosService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Header",
+  methods: {
+    async ping() {
+      try {
+        console.log(await api.ping());
+        console.log('ping ok')
+      } catch(err) {
+        console.log(err)
+      }
+    },
+  },
 });
 </script>
 
