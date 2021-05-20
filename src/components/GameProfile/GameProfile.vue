@@ -1,23 +1,40 @@
 <template>
-  <div> 
+  <div>
     <!-- TODO по клику на текст, текст преврщается из обычного блока в текст эреа.
       должны появляться кнопка отмены и сохранения.
       после потери фокусировки
     -->
     <div class="">
-      <img class="img-fluid rounded mx-auto d-block" 
-          src="http://placehold.it/1400x300" 
-          alt="Иллюстрация" 
-          style="max-height: 250px;"
-      >
+      <img
+        class="img-fluid rounded mx-auto d-block"
+        src="http://placehold.it/1400x300"
+        alt="Иллюстрация"
+        style="max-height: 250px;"
+      />
     </div>
     <div class="">
       <h2>
-        <textarea class="text-center h2 w-100 form-control-plaintext" id="gameName" v-bind:rows="1">Зимняя роскошь</textarea>
+        <textarea
+          class="text-center h2 w-100 form-control-plaintext"
+          id="gameName"
+          v-bind:rows="1"
+        >
+          Зимняя роскошь
+        </textarea>
       </h2>
-      <div class="" id="gameDescription" >
-        <p>В этом году Праздник Макушки зимы проходит в прекрасном Морском районе Глубоководья. Там проходит шумная ярмарка и специальный при­ём на ВИЛЛЕ КАССАЛАНТЕРОВ, которую семьяКассалантеров любезно открыла для публики навремя праздников.</p>
-        <p>Приятная атмосфера была испорчена, когда на оперную певицу­аасимара АРИЮ КАВАТИНУ на­ пал маленький изверг, который, похоже, появился из ниоткуда. Городская стража закрывает меропри­ятие, удерживая гостей на вилле для допроса, пока виновный не будет установлен.</p>
+      <div class="" id="gameDescription">
+        <p>
+          В этом году Праздник Макушки зимы проходит в прекрасном Морском районе
+          Глубоководья. Там проходит шумная ярмарка и специальный при­ём на
+          ВИЛЛЕ КАССАЛАНТЕРОВ, которую семьяКассалантеров любезно открыла для
+          публики навремя праздников.
+        </p>
+        <p>
+          Приятная атмосфера была испорчена, когда на оперную певицу­аасимара
+          АРИЮ КАВАТИНУ на­ пал маленький изверг, который, похоже, появился из
+          ниоткуда. Городская стража закрывает меропри­ятие, удерживая гостей на
+          вилле для допроса, пока виновный не будет установлен.
+        </p>
       </div>
       <!-- TODO количество строк -->
       <!-- <textarea class="w-100 form-control-plaintext" 
@@ -28,9 +45,9 @@
       </textarea> -->
     </div>
     <h3 class="h3 row accordion-btn">
-      <div 
+      <div
         class="btn btn-outline-secondary d-flex justify-content-between"
-        v-bind:class="{'btn-secondary': f}"
+        v-bind:class="{ 'btn-secondary': f }"
         @click="f = !f"
       >
         Настройки
@@ -44,12 +61,16 @@
           Игровая система:
         </label>
         <div class="col-auto">
-          <select 
-            id="system" 
-            class="form-select btn-secondary ff" 
+          <select
+            id="system"
+            class="form-select btn-secondary ff"
             v-model="system"
           >
-            <option v-for="item in ['1', '2']" :key="item" class="btn-secondary">
+            <option
+              v-for="item in ['1', '2']"
+              :key="item"
+              class="btn-secondary"
+            >
               {{ item }}
             </option>
           </select>
@@ -60,23 +81,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'RightBar',
+  name: "RightBar",
   data() {
     return {
       f: true,
       system: "" as string,
-    }
-  }
-
-})
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-
-#gameName, #gameDescription {
+#gameName,
+#gameDescription {
   color: white;
 }
 .btn-secondary {
@@ -94,5 +114,4 @@ export default defineComponent({
   background-color: #46464657;
   margin: 0;
 }
-
 </style>

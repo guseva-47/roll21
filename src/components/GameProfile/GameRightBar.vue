@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="person-block row ">
+    <div class="person-block row">
       <div class="col-lg-12 col-md-4 col-6">
         <PlayerRowBar />
       </div>
@@ -18,17 +18,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
-import PlayerRowBar from './PlayerRowBar.vue'
-
+import PlayerRowBar from "./PlayerRowBar.vue";
 
 export default defineComponent({
-  name: 'RightBar',
+  name: "RightBar",
   components: {
-    PlayerRowBar
-  }
-})
+    PlayerRowBar,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +38,6 @@ export default defineComponent({
   border-radius: 5px;
   background-color: #464646;
 }
-
 
 .avatar {
   max-height: 40px;

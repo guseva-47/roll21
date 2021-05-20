@@ -1,7 +1,7 @@
 <template>
-<!-- TODO добавиьт ссылки по окну и надписи -->
+  <!-- TODO добавиьт ссылки по окну и надписи -->
   <div class="card">
-    <img class="card-img-top" src="http://placehold.it/70x30" alt="">
+    <img class="card-img-top" src="http://placehold.it/70x30" alt="" />
     <div class="card-body p-1">
       <h5 class="card-title text-truncate">Зимняя роскошь</h5>
 
@@ -17,23 +17,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'GameCard',
+  name: "GameCard",
 });
 </script>
 
 <style lang="scss" scoped>
-  .card {
-    background-color: #464646;
-  }
+.card {
+  background-color: #464646;
+}
 
-  .bi {
-    font-size: 1rem;
-  }
+.bi {
+  font-size: 1rem;
+}
 
-  .card-img-top {
-    max-height: 80px;
-  }
+.card-img-top {
+  max-height: 80px;
+}
 </style>

@@ -1,4 +1,4 @@
 export enum ToolBarTabs {
   Files = 1,
-  Tokens = 2
+  Tokens = 2,
 }

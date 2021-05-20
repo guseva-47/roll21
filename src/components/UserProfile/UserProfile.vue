@@ -12,19 +12,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
-import GameCard from './GameCard.vue'
+import GameCard from "./GameCard.vue";
 
 export default defineComponent({
-  name: 'Profile',
+  name: "Profile",
   components: {
-    GameCard
-  }
+    GameCard,
+  },
 });
 </script>
 
-<style scoped lang="scss">
-
-
-</style>
+<style scoped lang="scss"></style>

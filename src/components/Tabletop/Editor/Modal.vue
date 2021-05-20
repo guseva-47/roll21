@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 // export default defineComponent({
 //     emits: {
@@ -24,7 +24,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: { title: String },
   setup(props, { emit }) {
-    emit('onClose');
+    emit("onClose");
   },
 });
 </script>

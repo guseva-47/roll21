@@ -2,34 +2,34 @@
   <div class="toolBar">
     <ul class="nav nav-tabs tt">
       <li class="nav-item t">
-        <button 
-          class="nav-link p-2" 
-          v-bind:class="{'active': activeTab == 0}"
+        <button
+          class="nav-link p-2"
+          v-bind:class="{ active: activeTab == 0 }"
           @click="activeTab = 0"
         >
           <i class="bi bi-file-earmark-arrow-down"></i>
         </button>
       </li>
       <li class="nav-item">
-        <button 
-          class="nav-link p-2" 
-          v-bind:class="{'active': activeTab == 1}"
+        <button
+          class="nav-link p-2"
+          v-bind:class="{ active: activeTab == 1 }"
           @click="activeTab = 1"
         >
           <i class="bi bi-box"></i>
         </button>
       </li>
       <li class="nav-item">
-        <button 
-          class="nav-link p-2" 
-          v-bind:class="{'active': activeTab == 2}"
+        <button
+          class="nav-link p-2"
+          v-bind:class="{ active: activeTab == 2 }"
           @click="activeTab = 2"
         >
           <i class="bi bi-pencil-square"></i>
         </button>
       </li>
     </ul>
-    
+
     <div v-if="activeTab == 0">
       <ImgRow />
       <ImgRow />
@@ -43,24 +43,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
-import ImgRow from './ImgRow.vue'
+import ImgRow from "./ImgRow.vue";
 
 export default defineComponent({
-  name: 'ToolBar',
+  name: "ToolBar",
   components: {
-    ImgRow
+    ImgRow,
   },
   data() {
     return {
       activeTab: 0,
-    }
+    };
   },
   methods: {
-    cl(): void {
-    }
-  }
+    cl(): void {},
+  },
 });
 </script>
 
@@ -75,5 +74,4 @@ export default defineComponent({
 .tt {
   background-color: #2a4747;
 }
-
 </style>

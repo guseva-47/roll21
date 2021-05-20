@@ -9,19 +9,16 @@
                 order-2"
     >
       <router-view name="leftBar" />
-    </div>     
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'TwoColumnTemplate',
+  name: "TwoColumnTemplate",
 });
 </script>
 
-<style scoped lang="scss">
-
-
-</style>
+<style scoped lang="scss"></style>

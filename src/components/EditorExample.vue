@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import Editor from '@/components/Tabletop/Editor/Editor.vue';
-import Modal from '@/components/Tabletop/Editor/Modal.vue';
+import { defineComponent, ref } from "vue";
+import Editor from "@/components/Tabletop/Editor/Editor.vue";
+import Modal from "@/components/Tabletop/Editor/Modal.vue";
 
 export default defineComponent({
   components: { Editor, Modal },

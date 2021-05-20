@@ -1,32 +1,31 @@
 <template>
   <div class="Tabletop">
     <div class="">
+      <div class="row p-0 m-0">
+        <div class="col-2 p-0">
+          <ToolBar />
+        </div>
 
-    <div class="row p-0 m-0">
-      <div class="col-2 p-0">
-        <ToolBar />
+        <div class="col-10 p-0">
+          <Map />
+        </div>
       </div>
-
-      <div class="col-10 p-0">
-        <Map />
-      </div>
-    </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
-import ToolBar from './ToolBar.vue'
-import Map from './Map.vue'
+import ToolBar from "./ToolBar.vue";
+import Map from "./Map.vue";
 
 export default defineComponent({
-  name: 'Tabletop',
+  name: "Tabletop",
   components: {
     ToolBar,
-    Map
-  }
+    Map,
+  },
 });
 </script>
 
@@ -38,11 +37,10 @@ export default defineComponent({
 
 .wrapper2 {
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .content2 {
   flex: 1 0 auto;
 }
-
 </style>
