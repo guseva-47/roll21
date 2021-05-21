@@ -3,10 +3,12 @@
     <!-- TODO  хедер и футтер заканчиваются не по одной линии справа. верх вылезает вправо-->
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-xxl">
-        <a class="navbar-brand" href="#">Tabletop</a>
+        <router-link to="/" class="navbar-brand">Tabletop</router-link>
         <div class="navbar-nav">
-          <i class="bi bi-person text-center p-0 m-0"></i>
-          <a class="nav-link small p-0 m-0" href="#" @click="ping">войти</a>
+          <router-link to="/profile/id" class="not-link nav-link text-center">
+            <i class="bi bi-person p-0 m-0"></i>
+            <p class="small p-0 m-0" @click="ping">войти</p>
+          </router-link>
         </div>
         <!-- <button 
               class="navbar-toggler"
@@ -45,9 +47,8 @@ export default defineComponent({
         // api.login()
         // console.log(await api.ok())
         // await api.fake()
-
-      } catch(err) {
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
     },
   },

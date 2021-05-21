@@ -1,9 +1,9 @@
 <template>
   <div class="row g-0">
     <div class="row lol" style="padding: 12px;">
-      <a class="btn btn-outline-success btn-lg " href="#" id="add-button">
+      <router-link to="/" class="btn btn-outline-success btn-lg">
         <i class="bi bi-plus-lg"></i> Новая игра
-      </a>
+      </router-link>
     </div>
     <GameCard />
     <GameCard />

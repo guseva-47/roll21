@@ -9,22 +9,23 @@ class AxiosService {
     return api.get("/ok", { headers: authHeader() });
   }
   fake() {
-    console.log('fake')
-    return api.get('/auth/fake')
-    .then((res) => {
-        console.log('responce fake')
+    console.log("fake");
+    return api
+      .get("/auth/fake")
+      .then((res) => {
+        console.log("responce fake");
         console.log(res.headers);
-    })
-    .catch(err => {
-        console.log(err)
-    })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   refreshToken() {
     const ch = {
-        'Set-Cookie': document.cookie
-    }
+      "Set-Cookie": document.cookie,
+    };
     return api
-      .get("/auth/refresh-token", { headers: {...ch, ...authHeader()} })
+      .get("/auth/refresh-token", { headers: { ...ch, ...authHeader() } })
       .then((res) => {
         console.log(res.headers);
       });

@@ -1,16 +1,22 @@
 <template>
   <div class="row FrendRowBar p-1">
     <div class="col-auto">
-      <a href="one-game.html">
+      <router-link to="/person/id">
         <img
           class="img-fluid rounded mb-3 mb-md-0 avatar"
           src="http://placehold.it/40x40"
           alt=""
         />
-      </a>
+      </router-link>
     </div>
     <div class="col p-0">
-      <p>Иванов Иван<br />игрок</p>
+      <p>
+        <router-link class="not-link" to="/profile/id">
+          Иванов Иван
+        </router-link>
+        <br />
+        игрок
+      </p>
     </div>
     <div class="col-auto">
       <!-- TODO выпадающее меню -->

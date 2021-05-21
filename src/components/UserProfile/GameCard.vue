@@ -2,25 +2,37 @@
   <!-- Game One -->
   <div class="row game-card">
     <div class="col-md-4">
-      <a href="one-game.html">
+      <router-link to="/game/id">
         <img
           class="img-fluid rounded mb-3 mb-md-0"
           src="http://placehold.it/700x300"
           alt=""
         />
-      </a>
+      </router-link>
     </div>
     <div class="col-md-8">
-      <h3>Зимняя роскошь</h3>
-      <p>
-        В этом году Праздник Макушки зимы проходит в прекрасном Морском районе
-        Глубоководья. Там проходит шумная ярмарка и специальный при­ём на ВИЛЛЕ
-        КАССАЛАНТЕРОВ, которую семьяКассалантеров любезно открыла для публики
-        навремя праздников.
-      </p>
-      <a class="btn btn-outline-primary btn-outline-darksalmon" href="#"
-        >Подробно</a
-      >
+      <div class="position-relative">
+        <h3 class="d-flex justify-content-between">
+          <h3 class="list-inline-item">
+          Зимняя роскошь роскошь роскошь
+          </h3>
+          <router-link
+            to="/game/id"
+            class="btn btn-outline-primary stretched-link btn-outline-darksalmon list-inline-item"
+          >
+            <i class="bi bi-arrow-right"></i>
+          </router-link>
+        </h3>
+        <p>
+          В этом году Праздник Макушки зимы проходит в прекрасном Морском районе
+          Глубоководья. Там проходит шумная ярмарка и специальный при­ём на
+          ВИЛЛЕ КАССАЛАНТЕРОВ, которую семьяКассалантеров любезно открыла для
+          публики навремя праздников.
+        </p>
+      </div>
+      <router-link to="/game/id/go" class="btn btn-outline-success">
+        Запустить <i class="bi bi-play play"></i>
+      </router-link>
     </div>
   </div>
 </template>

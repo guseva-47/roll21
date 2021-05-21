@@ -1,13 +1,11 @@
 <template>
-  <!-- TODO
-  список последних игр
-  нвости сайта
- -->
   <div class="Main container-xxl">
     <!-- Мои игры -->
     <div class="mt-3">
-      <h4 class="p-0 m-0">Мои игры</h4>
-      <div class="row row-cols-4 row-cols-md-6 m-0 p-0">
+      <router-link to="/profile/id" class="not-link">
+        <h4 class="p-0 m-0">Мои игры</h4>
+      </router-link>
+      <div class="row row-cols-3 row-cols-md-5 row-cols-xl-6 m-0 p-0 align-items-center">
         <div class="col p-1">
           <GameCard />
         </div>
@@ -22,6 +20,14 @@
 
         <div class="col p-1">
           <GameCard />
+        </div>
+        <div class="col p-1">
+          <router-link
+            to="/profile/id"
+            class="btn btn-sm btn-outline-secondary p-1"
+          >
+            <i class="bi bi-arrow-right viuw arrow"></i>
+          </router-link>
         </div>
       </div>
     </div>
@@ -60,5 +66,8 @@ export default defineComponent({
   margin-right: 0;
   border-radius: 5px;
   background-color: #464646;
+}
+.arrow {
+  font-size: 2rem;
 }
 </style>

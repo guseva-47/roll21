@@ -2,13 +2,11 @@
   <div class="">
     <div class="person-block row">
       <div class="col-auto">
-        <a href="one-game.html">
-          <img
-            class="img-fluid rounded mb-3 mb-md-0 avatar"
-            src="http://placehold.it/60x60"
-            alt=""
-          />
-        </a>
+        <img
+          class="img-fluid rounded mb-3 mb-md-0 avatar"
+          src="http://placehold.it/60x60"
+          alt=""
+        />
       </div>
       <div class="col">
         <p>Иванов Иван</p>

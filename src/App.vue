@@ -1,36 +1,33 @@
 <template>
-  
   <div class="wrapper">
     <Header />
 
     <div class="content">
-      <router-view/>
+      <router-view />
     </div>
 
     <Footer />
   </div>
-
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue'
+import { defineComponent } from "vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     Header,
-    Footer
-  }
+    Footer,
+  },
 });
 </script>
 
 <style lang="scss">
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@500&display=swap");
 #app {
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
@@ -48,4 +45,15 @@ export default defineComponent({
   flex: 1;
 }
 
+.not-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.not-link:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.not-link:hover {
+  color: #c9c9c9;
+}
 </style>
