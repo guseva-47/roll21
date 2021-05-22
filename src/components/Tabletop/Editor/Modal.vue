@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2>{{ title }}</h2>
-        <span class="close" @click="$emit('onClose')">&times;</span>
+        <span class="close" @click="onClose()">&times;</span>
       </div>
       <div class="modal-body">
         <slot></slot>
@@ -13,18 +13,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-
-// export default defineComponent({
-//     emits: {
-//         onClose: null,
-//     },
-// });
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: { title: String },
+  emits: { close: null },
   setup(props, { emit }) {
-    emit("onClose");
+    const onClose = () => emit('close');
+    return { onClose };
   },
 });
 </script>
