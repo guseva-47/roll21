@@ -1,7 +1,7 @@
 <template>
   <div class="row FrendRowBar p-1">
     <div class="col-auto">
-      <router-link to="/person/id">
+      <router-link to="/profile/id">
         <img
           class="img-fluid rounded mb-3 mb-md-0 avatar"
           src="http://placehold.it/40x40"
@@ -10,7 +10,7 @@
       </router-link>
     </div>
     <div class="col p-0">
-      <router-link class="not-link" to="/person/id">
+      <router-link class="not-link" to="/profile/id">
         <p>Иванов Иван</p>
       </router-link>
     </div>
@@ -47,6 +47,5 @@ export default defineComponent({
 .avatar {
   max-height: 40px;
 }
-.FrendRowBar {
-}
+
 </style>

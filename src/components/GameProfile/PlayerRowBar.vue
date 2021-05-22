@@ -1,7 +1,7 @@
 <template>
   <div class="row FrendRowBar p-1">
     <div class="col-auto">
-      <router-link to="/person/id">
+      <router-link to="/profile/id">
         <img
           class="img-fluid rounded mb-3 mb-md-0 avatar"
           src="http://placehold.it/40x40"
