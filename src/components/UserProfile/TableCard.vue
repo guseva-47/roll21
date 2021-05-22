@@ -1,8 +1,8 @@
 <template>
-  <!-- Game One -->
-  <div class="row game-card">
+  <!-- Table One -->
+  <div class="row tabe-card">
     <div class="col-md-4">
-      <router-link to="/game/id">
+      <router-link to="/tabe/id">
         <img
           class="img-fluid rounded mb-3 mb-md-0"
           src="http://placehold.it/700x300"
@@ -17,7 +17,7 @@
           Зимняя роскошь роскошь роскошь
           </h3>
           <router-link
-            to="/game/id"
+            to="/tabe/id"
             class="btn btn-outline-primary stretched-link btn-outline-darksalmon list-inline-item"
           >
             <i class="bi bi-arrow-right"></i>
@@ -30,7 +30,7 @@
           публики навремя праздников.
         </p>
       </div>
-      <router-link to="/game/id/go" class="btn btn-outline-success">
+      <router-link to="/tabe/id/go" class="btn btn-outline-success">
         Запустить <i class="bi bi-play play"></i>
       </router-link>
     </div>
@@ -41,12 +41,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "GameCard",
+  name: "TableCard",
 });
 </script>
 
 <style lang="scss" scoped>
-.game-card {
+.tabe-card {
   padding: 0;
   padding-top: 10px;
   padding-bottom: 10px;

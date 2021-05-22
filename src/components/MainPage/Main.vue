@@ -7,19 +7,19 @@
       </router-link>
       <div class="row row-cols-3 row-cols-md-5 row-cols-xl-6 m-0 p-0 align-items-center">
         <div class="col p-1">
-          <GameCard />
+          <TableCard />
         </div>
 
         <div class="col p-1">
-          <GameCard />
+          <TableCard />
         </div>
 
         <div class="col p-1">
-          <GameCard />
+          <TableCard />
         </div>
 
         <div class="col p-1">
-          <GameCard />
+          <TableCard />
         </div>
         <div class="col p-1">
           <router-link
@@ -47,13 +47,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import GameCard from "./GameCard.vue";
+import TableCard from "./TableCard.vue";
 import News from "./News.vue";
 
 export default defineComponent({
   name: "Main",
   components: {
-    GameCard,
+    TableCard,
     News,
   },
 });

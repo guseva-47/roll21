@@ -3,9 +3,10 @@ import Main from "../components/MainPage/Main.vue";
 import UserProfile from "../components/UserProfile/UserProfile.vue";
 import TwoColumnTemplate from "../components/TwoColumnTemplate.vue";
 import UserRightBar from "../components/UserProfile/UserRightBar.vue";
-import GameProfile from "../components/GameProfile/GameProfile.vue";
-import GameRightBar from "../components/GameProfile/GameRightBar.vue";
+import TableProfile from "../components/TableProfile/TableProfile.vue";
+import TableRightBar from "../components/TableProfile/TableRightBar.vue";
 import Tabletop from "../components/Tabletop/Tabletop.vue";
+import EditorExample from "@/components/EditorExample.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,21 +15,22 @@ const routes: Array<RouteRecordRaw> = [
     component: Main,
   },
   {
-    path: "/game",
-    name: "GameProfile",
+    path: "/table",
+    name: "TableProfile",
     component: TwoColumnTemplate,
     children: [
       {
-        path: "id",
+        path: ":id",
+        name: "TableProfId",
         components: {
-          rightBar: GameRightBar,
-          leftBar: GameProfile,
+          rightBar: TableRightBar,
+          leftBar: TableProfile,
         },
       },
     ],
   },
   {
-    path: "/game/id/go",
+    path: "/table/:id/go",
     name: "Go",
     component: Tabletop,
   },
@@ -38,7 +40,8 @@ const routes: Array<RouteRecordRaw> = [
     component: TwoColumnTemplate,
     children: [
       {
-        path: "id",
+        path: ":id",
+        name: "ProfId",
         components: {
           rightBar: UserRightBar,
           leftBar: UserProfile,
@@ -46,6 +49,13 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+      path: "/editor",
+      name: "Editor",
+      component: EditorExample
+  },
+  { path: '/profile', redirect: { name: 'Main' }}, // todo, по-хорошему, надо переводить а страницу пользователя, я думаю
+  { path: '/table', redirect: { name: 'Main' }} // todo
 ];
 
 const router = createRouter({

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import api from "@/services/AxiosService";
+import api from "@/services/main.service";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -44,8 +44,8 @@ export default defineComponent({
     async ping() {
       try {
         console.log(await api.ping());
-        // api.login()
-        // console.log(await api.ok())
+        api.login()
+        console.log(await api.ok())
         // await api.fake()
       } catch (err) {
         console.log(err);
