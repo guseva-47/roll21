@@ -27,7 +27,7 @@ export default defineComponent({
     TableCard,
   },
   async created() {
-    console.log(await tabletopService.getAllTabletops("5fb164e5b304e646441ce2da"))
+    console.log(await tabletopService.getAllTabletops("5fb164e5b304e646441ce2da")) // TODO
   }
 });
 </script>

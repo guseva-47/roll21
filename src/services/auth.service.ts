@@ -1,16 +1,14 @@
-import { IUserLocalStorage } from "./types";
+import { IAccessToken, IUserLocalStorage } from "./types";
 import api from "@/backend-api";
 
 class AuthService {
   async checkAccessTokenAndGetAuthHeader(): Promise<{ Authorization: string }> {
     // Достать пользователя из local storage. Если токена у него нет, то вернуть ошибку, нужна авторизация
-    // @ts-ignore
     const user = this._getUserFromLocalStorage();
     if (!user || !user.access_token)
       throw new Error("User or access token not found in locall storage");
 
     // Проверить, что access_token истек, если еще не истек, то вернуть хедер (пользователь авторизован)
-    // @ts-ignore
     const accessTokenExp = this._parseTokenData(user.access_token).exp;
     if (!this._isAccessTokenExpired(accessTokenExp))
       return this._getAuthHeader(user.access_token);
@@ -25,6 +23,29 @@ class AuthService {
     this._saveUserInLocalStorage(user);
 
     return this._getAuthHeader(user.access_token);
+  }
+
+  async getAuthorizedUserId(): Promise<string | null> {
+    // Достать пользователя из local storage. Если токена у него нет, то вернуть ошибку, нужна авторизация
+    const user = this._getUserFromLocalStorage();
+    if (!user || !user.access_token) return null;
+
+    // Проверить, что access_token истек, если еще не истек, то вернуть хедер (пользователь авторизован)
+    const accessTokenExp = this._parseTokenData(user.access_token).exp;
+    if (!this._isAccessTokenExpired(accessTokenExp))
+      return this._parseTokenData(user.access_token).id;
+
+    // Послать запрос на получение нового токена через рефреш токен (из куки). Если вернулась ошибка, рефреш токен не валиден, вернуть ошибку
+    const res = await this._postRefreshToken(user.access_token).catch(
+      (_) => null
+    );
+    if (res == null) return null;
+
+    // Полученный токен сохраняем юзеру в local_storage
+    user.access_token = res.headers.authorization; // todo ????
+    this._saveUserInLocalStorage(user);
+
+    return this._parseTokenData(user.access_token).id;
   }
 
   _saveUserInLocalStorage(user: IUserLocalStorage) {
@@ -53,7 +74,7 @@ class AuthService {
     return { Authorization: "Bearer " + userAccessToken };
   }
 
-  _parseTokenData(accessToken: string) {
+  _parseTokenData(accessToken: string): IAccessToken {
     let payload = "";
     let tokenData = {};
 
@@ -64,7 +85,7 @@ class AuthService {
       throw new Error(error);
     }
 
-    return tokenData;
+    return tokenData as IAccessToken;
   }
 
   _isAccessTokenExpired(accessTokenExpDate: number) {

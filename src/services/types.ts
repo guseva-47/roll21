@@ -3,5 +3,7 @@ export interface IUserLocalStorage {
 }
 
 export interface IAccessToken {
+  id: string;
   exp: number;
+  iat: number;
 }
