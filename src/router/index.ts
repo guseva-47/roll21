@@ -50,12 +50,13 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-      path: "/editor",
-      name: "Editor",
-      component: EditorExample
+    path: "/editor",
+    name: "Editor",
+    component: EditorExample,
   },
-  { path: '/profile', redirect: { name: 'Main' }}, // todo, по-хорошему, надо переводить а страницу пользователя, я думаю
-  { path: '/table', redirect: { name: 'Main' }} // todo
+  { path: "/profile", redirect: { name: "Main" } }, // todo, по-хорошему, надо переводить а страницу пользователя, я думаю
+  { path: "/table", redirect: { name: "Main" } }, // todo
+  { path: "/login", name: "login", component: Main }, // todo настоящая страница логин
 ];
 
 const router = createRouter({

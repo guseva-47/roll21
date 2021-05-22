@@ -48,7 +48,13 @@
           <button class="btn btn-outline-secondary" @click="cancelEdit">
             Отменить изменения
           </button>
-          <button class="btn btn-outline-success" type="submit" value="Submit" :disabled="isEmptyName" @click="saveEdit">
+          <button
+            class="btn btn-outline-success"
+            type="submit"
+            value="Submit"
+            :disabled="isEmptyName"
+            @click="saveEdit"
+          >
             Сохранить
           </button>
         </div>
@@ -60,7 +66,13 @@
           <button class="btn btn-outline-secondary" @click="cancelCreate">
             Отменить
           </button>
-          <button class="btn btn-outline-success" type="submit" value="Submit" :disabled="isEmptyName"  @click="saveNew">
+          <button
+            class="btn btn-outline-success"
+            type="submit"
+            value="Submit"
+            :disabled="isEmptyName"
+            @click="saveNew"
+          >
             Сохранить
           </button>
         </div>
@@ -110,6 +122,7 @@ import Editor from "../Tabletop/Editor/Editor.vue";
 import { ITableData } from "../types/types.interfaces";
 import TabletopService from "../../services/tabletop.service";
 import tabletopService from "../../services/tabletop.service";
+import authService from "@/services/auth.service";
 
 const clone = rfdc();
 
@@ -132,17 +145,18 @@ export default defineComponent({
       this.table = { name: "NEW", aboutInfo: "NEW ab ou tI nfo" };
     else {
       // получить от сервера
-      this.table = await tabletopService.getTabletop(this.$route.params.id.toString())
-      this.table.id = this.table._id
+      this.table = await tabletopService.getTabletop(
+        this.$route.params.id.toString()
+      );
+      this.table.id = this.table._id;
     }
-    
+
     this.editedTable = clone(this.table);
   },
   computed: {
     isEmptyName(): boolean {
       return this.editedTable.name.length <= 0;
-    }
-
+    },
   },
   methods: {
     editModOn() {
@@ -162,47 +176,54 @@ export default defineComponent({
       try {
         await TabletopService.putTabletop(this.editedTable);
         this.table = clone(this.editedTable);
-
-        console.log(this.table)
-
         this.editModOff();
       } catch (err) {
-        console.log("Error save table:", err); // todo перенаправление на авторизацию, наверное
+        console.log("Error save table:", err);
+        this.$router.push({ name: "Login" });
       }
     },
 
     async deleteTable() {
       try {
         if (typeof this.table.id == "undefined")
-          throw new Error("Tabletop id is undefined");
+          if (typeof this.table._id == "undefined") throw new Error("Tabletop id is undefined");
+          else this.table.id = this.table._id
 
         await TabletopService.deleteTabletop(this.table.id);
-        // // todo перенаправление на страницу профиля
-        // this.$router.push('/profile/', userId )
       } catch (err) {
-        console.log("Error save table:", err); // todo перенаправление на авторизацию, наверное
+        console.log("Error delete table:", err);
+        this.$router.push({ name: "Login" });
       }
+
+      const id = await authService.getAuthorizedUserId();
+      if (id == null) this.$router.push({ name: "Login" });
+      // @ts-ignore
+      this.$router.push({ name: "ProfId", params: { id: id } });
     },
 
     async saveNew() {
       try {
         this.table = await TabletopService.postTabletop(this.editedTable);
-        console.log(this.table)
-        //if (typeof this.table.id == 'undefined') throw new Error('Id of new table == undefined')
+        console.log(this.table);
+        if (typeof this.table.id == 'undefined') throw new Error('Id of new table == undefined')
         this.editedTable = clone(this.table);
 
         this.editModOff();
-        // todo перенаправление на страницу созданной игры (чтоб не id = -1 было)
-        // @ts-ignore
-        this.$router.push({name: 'TableProfId', params: {id: this.table.id}})
+
+        this.$router.push({
+          name: "TableProfId",
+          // @ts-ignore
+          params: { id: this.table.id },
+        });
       } catch (err) {
-        console.log("Error create table:", err); // todo перенаправление на авторизацию, наверное
-      }      
+        console.log("Error create table:", err);
+        this.$router.push({ name: "Login" });
+      }
     },
 
     async cancelCreate() {
       this.$router.go(-1);
-    }
+    },
   },
 });
 </script>

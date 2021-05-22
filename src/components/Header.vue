@@ -5,10 +5,10 @@
       <div class="container-xxl">
         <router-link to="/" class="navbar-brand">Tabletop</router-link>
         <div class="navbar-nav">
-          <router-link to="/profile/id" class="not-link nav-link text-center">
+          <div class="nav-link text-center" @click="loginOrProfile">
             <i class="bi bi-person p-0 m-0"></i>
-            <p class="small p-0 m-0" @click="ping">войти</p>
-          </router-link>
+            <p class="small p-0 m-0" @click="loginOrProfile">{{label}}</p>
+          </div>
         </div>
         <!-- <button 
               class="navbar-toggler"
@@ -35,22 +35,37 @@
 </template>
 
 <script>
+import authService from "@/services/auth.service";
 import api from "@/services/main.service";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Header",
+  data() {
+    return {
+      label: 'войти'
+    }
+  },
+  async created() {
+    await this.ping();
+    const id = await authService.getAuthorizedUserId();
+    if (id != null) this.label = id;
+  },
   methods: {
     async ping() {
       try {
         console.log(await api.ping());
         api.login()
         console.log(await api.ok())
-        // await api.fake()
       } catch (err) {
         console.log(err);
       }
     },
+    async loginOrProfile() {
+      const id = await authService.getAuthorizedUserId();
+      if (id == null) this.$router.push({ name: 'Login'});
+      this.$router.push({ name: 'ProfId', params: { id: id}});
+    }
   },
 });
 </script>

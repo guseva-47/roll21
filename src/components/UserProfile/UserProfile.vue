@@ -1,7 +1,6 @@
 <template>
   <div class="row g-0">
     <div class="row lol" style="padding: 12px;">
-      <!-- $router.push({ name: 'editTable', params: { id: '-1' } }) -->
       <router-link
         :to="{ name: 'TableProfId', params: { id: '-1' } }"
         class="btn btn-outline-success btn-lg"
