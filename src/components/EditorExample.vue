@@ -1,22 +1,23 @@
 <template>
   <div class="hello">
     <button @click="visible = true">Open Modal</button>
-    <Modal v-if="visible" title="Добавить заметку" @close="visible = false">
-      <Editor />
-    </Modal>
+    <modal v-if="visible" title="Добавить заметку" @close="visible = false"></modal>
+    <editable-view v-model:htmlContent="content" />
+    <p>{{ content }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Editor from '@/components/Tabletop/Editor/Editor.vue';
-import Modal from '@/components/Tabletop/Editor/Modal.vue';
+import Modal from '@/components/utils/Modal.vue';
+import EditableView from './utils/EditableView.vue';
 
 export default defineComponent({
-  components: { Editor, Modal },
+  components: { Modal, EditableView },
   setup() {
     const visible = ref(false);
-    return { visible };
+    const content = ref('waka<h1>waka</h1>ee ee');
+    return { visible, content };
   },
 });
 </script>
