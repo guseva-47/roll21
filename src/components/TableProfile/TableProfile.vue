@@ -35,10 +35,10 @@
 
       <!-- Table.Description -->
       <div>
-        <Editor v-if="isEditMode || isCreateMode" />
+        <!-- <Editor v-if="isEditMode || isCreateMode" />
         <div v-else class="" id="tableDescription" @click="editModOn">
           {{ table.aboutInfo }}
-        </div>
+        </div> -->
       </div>
 
       <!-- Кнопки сохранения Изменений и отмены Изменений записи -->
@@ -118,7 +118,6 @@
 import { defineComponent } from "vue";
 import rfdc from "rfdc";
 
-import Editor from "../Tabletop/Editor/Editor.vue";
 import { ITableData } from "../types/types.interfaces";
 import TabletopService from "../../services/tabletop.service";
 import tabletopService from "../../services/tabletop.service";
@@ -128,7 +127,7 @@ const clone = rfdc();
 
 export default defineComponent({
   name: "TableProfile",
-  components: { Editor },
+  // components: { Editor },
   data() {
     return {
       isOpenAccordion: false,
@@ -149,8 +148,6 @@ export default defineComponent({
       // получить от сервера
       // @ts-ignore
       this.table = await tabletopService.getTabletop(tableId);
-      console.log('this.table = ', this.table)
-      this.table.id = this.table._id;
     }
 
     this.editedTable = clone(this.table);
@@ -187,11 +184,9 @@ export default defineComponent({
 
     async deleteTable() {
       try {
-        if (typeof this.table.id == "undefined")
-          if (typeof this.table._id == "undefined") throw new Error("Tabletop id is undefined");
-          else this.table.id = this.table._id
+        if (typeof this.table._id == "undefined") throw new Error("Tabletop id is undefined");
 
-        await TabletopService.deleteTabletop(this.table.id);
+        await TabletopService.deleteTabletop(this.table._id);
       } catch (err) {
         console.log("Error delete table:", err);
         this.$router.push({ name: "Login" });
@@ -207,15 +202,13 @@ export default defineComponent({
       try {
         this.table = await TabletopService.postTabletop(this.editedTable);
         console.log(this.table);
-        if (typeof this.table.id == 'undefined') throw new Error('Id of new table == undefined')
+        if (typeof this.table._id == 'undefined') throw new Error('Id of new table == undefined')
         this.editedTable = clone(this.table);
 
         this.editModOff();
 
         this.$router.push({
-          name: "TableProfId",
-          // @ts-ignore
-          params: { idTable: this.table.id },
+          name: "TableProfId", params: { idTable: this.table._id },
         });
       } catch (err) {
         console.log("Error create table:", err);

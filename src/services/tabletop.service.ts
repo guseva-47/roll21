@@ -29,8 +29,6 @@ class TabletopService {
       .post("tabletops", table, { headers: authHeader })
       .then((res) => {
         tableData = res.data;
-        // @ts-ignore
-        tableData.id = tableData._id;
       })
       .catch((_) => {
         throw new Error("The table info update failed.");

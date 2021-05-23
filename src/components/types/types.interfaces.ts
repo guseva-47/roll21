@@ -7,7 +7,6 @@ export interface ITableData {
   name: string;
   aboutInfo?: string;
   gameSystem?: string;
-  id?: string;
   owner?: string;
   _id?: string;
 }
