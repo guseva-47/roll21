@@ -2,8 +2,8 @@ import api from "@/backend-api";
 import authService from "./auth.service";
 
 class MainService {
-  access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjE2NGU1YjMwNGU2NDY0NDFjZTJkYSIsImVtYWlsIjoiIiwiaWF0IjoxNjIxNzA3MDI5LCJleHAiOjE2MjE3NDMwMjl9.TsVPX6M4x0XmoMIF9iljK7NfETaC_FD-HIL6ufNW5Mk"
-  refresh_token = "umcxsgz6uef0jkf7ade4";
+  access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjE2NGU1YjMwNGU2NDY0NDFjZTJkYSIsImVtYWlsIjoiIiwiaWF0IjoxNjIxNzY1NDQ0LCJleHAiOjE2MjE4MDE0NDR9.F3zKcK7JYQ1_BM1JbepBVDrq5GW5eT1YSWip2eXy7fI"
+  refresh_token = "k7ub7o0t5mld4bbh57se";
   userId = "5fb164e5b304e646441ce2da";
 
   ping(): Promise<any> {

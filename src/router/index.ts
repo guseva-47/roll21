@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     component: TwoColumnTemplate,
     children: [
       {
-        path: ":id",
+        path: ":idTable",
         name: "TableProfId",
         components: {
           rightBar: TableRightBar,
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: "/table/:id/go",
+    path: "/table/:idTable/go",
     name: "Go",
     component: Tabletop,
   },

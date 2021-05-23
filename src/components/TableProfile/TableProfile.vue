@@ -140,14 +140,16 @@ export default defineComponent({
     };
   },
   async created() {
-    this.isCreateMode = this.$route.params.id == "-1";
+    const tableId = this.$route.params.idTable;
+    this.isCreateMode = tableId == "-1";
     if (this.isCreateMode)
       this.table = { name: "NEW", aboutInfo: "NEW ab ou tI nfo" };
     else {
+      console.log('tableId = ', tableId)
       // получить от сервера
-      this.table = await tabletopService.getTabletop(
-        this.$route.params.id.toString()
-      );
+      // @ts-ignore
+      this.table = await tabletopService.getTabletop(tableId);
+      console.log('this.table = ', this.table)
       this.table.id = this.table._id;
     }
 
@@ -213,7 +215,7 @@ export default defineComponent({
         this.$router.push({
           name: "TableProfId",
           // @ts-ignore
-          params: { id: this.table.id },
+          params: { idTable: this.table.id },
         });
       } catch (err) {
         console.log("Error create table:", err);

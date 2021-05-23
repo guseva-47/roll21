@@ -19,7 +19,7 @@ class AuthService {
     });
 
     // Полученный токен сохраняем юзеру в local_storage
-    user.access_token = res.headers.authorization; // todo ????
+    user.access_token = res.headers.authorization; // todo ???? так работает?
     this._saveUserInLocalStorage(user);
 
     return this._getAuthHeader(user.access_token);
@@ -42,7 +42,7 @@ class AuthService {
     if (res == null) return null;
 
     // Полученный токен сохраняем юзеру в local_storage
-    user.access_token = res.headers.authorization; // todo ????
+    user.access_token = res.headers.authorization; // todo ???? так обращение к токену работает?
     this._saveUserInLocalStorage(user);
 
     return this._parseTokenData(user.access_token).id;
