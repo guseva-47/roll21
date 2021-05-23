@@ -1,6 +1,6 @@
 /**
   * theme modification
   */
-.ql-editor {
+.fixed-height .ql-editor {
   height: 60vh;
 }
