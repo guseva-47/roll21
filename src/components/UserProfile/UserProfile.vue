@@ -1,10 +1,10 @@
 <template>
-  <div class="row g-0">
-    <div class="row lol" style="padding: 12px;">
+  <div class="row">
+    <div class="row m-0 py-2">
       <router-link
         v-if="isAuth"
         :to="{ name: 'TableProfId', params: { idTable: '-1' } }"
-        class="btn btn-outline-success btn-lg"
+        class="btn btn-outline-success btn-lg p-1"
       >
         <i class="bi bi-plus-lg"></i> Новая игра
       </router-link>
@@ -17,10 +17,6 @@
       </p>
     </div>
     <div v-else>
-      <TableCard
-        :table="allTabletops[0]"
-        :userId="userId"
-      />
       <TableCard 
         v-for="(table, i) in allTabletops"
         :key="i"

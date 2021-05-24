@@ -31,7 +31,7 @@ class TabletopService {
         tableData = res.data;
       })
       .catch((_) => {
-        throw new Error("The table info update failed.");
+        throw new Error("The table info post failed.");
       });
     return tableData;
   }
@@ -56,7 +56,7 @@ class TabletopService {
         tableData = res.data;
       })
       .catch((_) => {
-        throw new Error("The table info update failed.");
+        throw new Error("The table info get failed.");
       });
     return tableData;
   }
@@ -71,7 +71,7 @@ class TabletopService {
         tableData = res.data;
       })
       .catch((_) => {
-        throw new Error("The table info update failed.");
+        throw new Error("Tables info get failed.");
       });
     return tableData;
   }

@@ -1,48 +1,31 @@
 <template>
-  <div>
-    <rich-text-viewer
-      v-if="readonly"
-      :content="content"
-      @focus="edit()"
-      fixedHeight="true"
-    />
-    <template v-else>
-      <rich-text-editor v-model:content="content" :focused="true" heightFixed="true" />
-      <button :disabled="content === backup" @click="apply(true)">
-        Accept
-      </button>
-      <button @click="apply(false)">Cancel</button>
-    </template>
-  </div>
+  <rich-text-viewer
+    v-if="readonly"
+    :content="content"
+    @focus="edit()"
+    fixedHeight="true"
+  />
+  <rich-text-editor v-else v-model:content="content" :focused="true" />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import RichTextEditor from '@/components/utils/RichTextEditor/RichTextEditor.vue';
-import RichTextViewer from '@/components/utils/RichTextViewer.vue';
+import { defineComponent, computed } from "vue";
+import RichTextEditor from "@/components/utils/RichTextEditor/RichTextEditor.vue";
+import RichTextViewer from "@/components/utils/RichTextViewer.vue";
 
 export default defineComponent({
   components: { RichTextEditor, RichTextViewer },
-  props: { htmlContent: String },
-  emits: ['update:htmlContent'],
+  props: { htmlContent: String, readonly: { type: Boolean, default: true } },
+  emits: ["update:htmlContent", "onEdit"],
   setup: (props, { emit }) => {
-    const backup = ref(props.htmlContent);
-    const content = ref(props.htmlContent);
-    const readonly = ref(true);
+    const content = computed<string>({
+      get: () => props.htmlContent ?? "",
+      set: (value) => emit("update:htmlContent", value),
+    });
 
-    const edit = () => (readonly.value = false);
+    const edit = () => emit("onEdit");
 
-    const apply = (needSave: boolean) => {
-      if (needSave) {
-        backup.value = content.value;
-        emit('update:htmlContent', content.value);
-      } else {
-        content.value = backup.value;
-      }
-      readonly.value = true;
-    };
-
-    return { content, backup, readonly, edit, apply };
+    return { content, edit };
   },
 });
 </script>

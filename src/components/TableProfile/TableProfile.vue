@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- TODO по клику на текст, текст преврщается из обычного блока в текст эреа.
-      должны появляться кнопка отмены и сохранения.
-      после потери фокусировки
-    -->
     <div class="">
       <img
         class="img-fluid rounded mx-auto d-block"
@@ -33,12 +29,26 @@
         </h2>
       </div>
 
-      <!-- Table.Description -->
+      <!-- Table.AboutInfo -->
       <div>
-        <!-- <Editor v-if="isEditMode || isCreateMode" />
-        <div v-else class="" id="tableDescription" @click="editModOn">
-          {{ table.aboutInfo }}
-        </div> -->
+        <!-- Table.AboutInfo в случае если запись создается. 
+          Отличается тем, что нет возможности выйти из режима редактирования
+        -->
+        <editable-view
+          v-if="isCreateMode"
+          v-model:htmlContent="editedTable.aboutInfo"
+          :readonly="false"
+          @onEdit="readonly = false"
+        />
+        <!-- Table.AboutInfo в случае если запись просматривается или редактируется. 
+          Текст может переходить в режим редактирования, если кликнуть по тексту
+        -->
+        <editable-view
+          v-else
+          v-model:htmlContent="editedTable.aboutInfo"
+          :readonly="!isEditMode"
+          @onEdit="isEditMode = true"
+        />
       </div>
 
       <!-- Кнопки сохранения Изменений и отмены Изменений записи -->
@@ -122,12 +132,13 @@ import { ITableData } from "../types/types.interfaces";
 import TabletopService from "../../services/tabletop.service";
 import tabletopService from "../../services/tabletop.service";
 import authService from "@/services/auth.service";
+import EditableView from "../utils/EditableView.vue";
 
 const clone = rfdc();
 
 export default defineComponent({
   name: "TableProfile",
-  // components: { Editor },
+  components: { EditableView },
   data() {
     return {
       isOpenAccordion: false,
@@ -144,10 +155,14 @@ export default defineComponent({
     if (this.isCreateMode)
       this.table = { name: "NEW", aboutInfo: "NEW ab ou tI nfo" };
     else {
-      console.log('tableId = ', tableId)
+      console.log("tableId = ", tableId);
       // получить от сервера
-      // @ts-ignore
-      this.table = await tabletopService.getTabletop(tableId);
+      try {
+        this.table = await tabletopService.getTabletop(tableId as string);
+      } catch (err) {
+        console.log("Error get table:", err);
+        this.$router.push({ name: "Login" });
+      }
     }
 
     this.editedTable = clone(this.table);
@@ -158,13 +173,15 @@ export default defineComponent({
     },
   },
   methods: {
-    editModOn() {
+    async editModOn() {
+      const userId = await authService.getAuthorizedUserId();
+      if (userId == null) return;
+      if (userId != this.table.owner) return;
       this.isEditMode = true;
-      // console.log(this.$refs.tableTitle)
-      // this.$refs.tableTitle.focus(); todo
     },
     editModOff() {
       this.isEditMode = false;
+      this.isCreateMode = false;
     },
     cancelEdit() {
       this.editModOff();
@@ -184,7 +201,8 @@ export default defineComponent({
 
     async deleteTable() {
       try {
-        if (typeof this.table._id == "undefined") throw new Error("Tabletop id is undefined");
+        if (typeof this.table._id == "undefined")
+          throw new Error("Tabletop id is undefined");
 
         await TabletopService.deleteTabletop(this.table._id);
       } catch (err) {
@@ -202,13 +220,15 @@ export default defineComponent({
       try {
         this.table = await TabletopService.postTabletop(this.editedTable);
         console.log(this.table);
-        if (typeof this.table._id == 'undefined') throw new Error('Id of new table == undefined')
+        if (typeof this.table._id == "undefined")
+          throw new Error("Id of new table == undefined");
         this.editedTable = clone(this.table);
 
         this.editModOff();
 
         this.$router.push({
-          name: "TableProfId", params: { idTable: this.table._id },
+          name: "TableProfId",
+          params: { idTable: this.table._id },
         });
       } catch (err) {
         console.log("Error create table:", err);

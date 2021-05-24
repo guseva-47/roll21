@@ -2,7 +2,7 @@ import api from "@/backend-api";
 import authService from "./auth.service";
 
 class MainService {
-  access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjE2NGU1YjMwNGU2NDY0NDFjZTJkYSIsImVtYWlsIjoiIiwiaWF0IjoxNjIxNzY1NDQ0LCJleHAiOjE2MjE4MDE0NDR9.F3zKcK7JYQ1_BM1JbepBVDrq5GW5eT1YSWip2eXy7fI"
+  access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjE2NGU1YjMwNGU2NDY0NDFjZTJkYSIsImVtYWlsIjoiIiwiaWF0IjoxNjIxODQ2MzE3LCJleHAiOjE2MjE4ODIzMTd9.GznHyqTuHNq7Yoidm49FA03zbwISiJLlVpsIaMFbiSY"
   refresh_token = "k7ub7o0t5mld4bbh57se";
   userId = "5fb164e5b304e646441ce2da";
 
