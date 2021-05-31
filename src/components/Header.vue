@@ -5,10 +5,22 @@
       <div class="container-xxl">
         <router-link to="/" class="navbar-brand">Tabletop</router-link>
         <div class="navbar-nav">
-          <div class="nav-link text-center" @click="loginOrProfile">
+          <a
+            v-if="!haveUser"
+            href="http://localhost:3000/login"
+            class="nav-link text-center"
+          >
             <i class="bi bi-person p-0 m-0"></i>
-            <p class="small p-0 m-0" @click="loginOrProfile">{{label}}</p>
-          </div>
+            <p class="small p-0 m-0">{{ label }}</p>
+          </a>
+          <router-link
+            v-else
+            :to="{ name: 'ProfId', params: { id: id } }"
+            class="nav-link text-center"
+          >
+            <i class="bi bi-person p-0 m-0"></i>
+            <p class="small p-0 m-0">{{ label }}</p>
+          </router-link>
         </div>
         <!-- <button 
               class="navbar-toggler"
@@ -43,29 +55,36 @@ export default defineComponent({
   name: "Header",
   data() {
     return {
-      label: 'войти'
-    }
+      label: "войти с google",
+      log: "http://localhost:3000/login",
+      id: null,
+    };
   },
   async created() {
-    await this.ping();
-    const id = await authService.getAuthorizedUserId();
-    if (id != null) this.label = id;
+    // await this.ping();
+    this.id = await authService.getAuthorizedUserId();
+    if (this.id != null) this.label = this.id;
+  },
+  computed: {
+    haveUser() {
+      return this.id != null;
+    },
   },
   methods: {
     async ping() {
       try {
         console.log(await api.ping());
-        api.login()
-        console.log(await api.ok())
+        api.login();
+        console.log(await api.ok());
       } catch (err) {
         console.log(err);
       }
     },
-    async loginOrProfile() {
-      const id = await authService.getAuthorizedUserId();
-      if (id == null) this.$router.push({ name: 'Login'});
-      this.$router.push({ name: 'ProfId', params: { id: id}});
-    }
+    // async loginOrProfile() {
+    //   const id = await authService.getAuthorizedUserId();
+    //   if (id == null) this.$router.push({ name: 'Login'});
+    //   this.$router.push({ name: 'ProfId', params: { id: id}});
+    // }
   },
 });
 </script>
