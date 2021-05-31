@@ -39,11 +39,9 @@ class TabletopService {
   async deleteTabletop(tableId: string): Promise<void> {
     const authHeader = await authService.checkAccessTokenAndGetAuthHeader();
 
-    api
-      .delete("/tabletops/" + tableId, { headers: authHeader })
-      .catch((_) => {
-        throw new Error("The table info delete failed.");
-      });
+    api.delete("/tabletops/" + tableId, { headers: authHeader }).catch((_) => {
+      throw new Error("The table info delete failed.");
+    });
   }
 
   async getTabletop(tableId: string): Promise<ITableData> {
@@ -64,9 +62,30 @@ class TabletopService {
   async getAllTabletops(idSomeUser: string): Promise<ITableData[]> {
     const authHeader = await authService.checkAccessTokenAndGetAuthHeader();
 
-    let tableData:ITableData[] = [];
+    let tableData: ITableData[] = [];
     await api
-      .get( idSomeUser +"/tabletops", { headers: authHeader })
+      .get(idSomeUser + "/tabletops", { headers: authHeader })
+      .then((res) => {
+        tableData = res.data;
+      })
+      .catch((_) => {
+        throw new Error("Tables info get failed.");
+      });
+    return tableData;
+  }
+
+  async getFewTabletops(
+    idSomeUser: string,
+    count: number
+  ): Promise<ITableData[]> {
+    const authHeader = await authService.checkAccessTokenAndGetAuthHeader();
+
+    let tableData: ITableData[] = [];
+    await api
+      .get(idSomeUser + "/tabletops", {
+        headers: authHeader,
+        params: { count: count },
+      })
       .then((res) => {
         tableData = res.data;
       })
