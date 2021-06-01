@@ -24,9 +24,6 @@
         :userId="userId"
       />
     </div>
-    <!-- <TableCard />
-    <TableCard />
-    <TableCard /> -->
   </div>
 </template>
 

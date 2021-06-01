@@ -59,7 +59,6 @@ export default defineComponent({
     },
     tableProfileRoute(): object {
       const path = { name: "TableProfId", params: { idTable: this.tableId } };
-      console.log(JSON.stringify(path));
       return path;
     },
     tableGoRoute(): object {

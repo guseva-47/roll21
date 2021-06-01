@@ -12,33 +12,125 @@
         <p>Иванов Иван</p>
         <!-- <p>Комментарий заказчика</p> -->
       </div>
+      <button v-if="haveSubscribeButton" @click="follow" class="btn btn-outline-success btn-lg p-1 my-2">
+      Подписаться
+    </button>
     </div>
 
+    <!-- Подписчики -->
     <div class="person-block row g-0">
-      <div class="col-lg-12 col-md-4 col-6">
-        <FrendRowBar />
+      <p class="p-1 m-0">Подписчики ({{ subscribers.length }})</p>
+      <div
+        v-for="(user, i) in subscribers"
+        :key="i"
+        class="col-lg-12 col-md-4 col-6"
+      >
+        <FrendRowBar :user="user" />
       </div>
-      <div class="col-lg-12 col-md-4 col-6">
-        <FrendRowBar />
+      <p v-if="subscribers.length < 1" class="p-1 m-0">Подписчиков пока нет</p>
+    </div>
+
+    <!-- Подписки -->
+    <div class="person-block row g-0">
+      <p class="p-1 m-0">Подписки ({{ subscriptions.length }})</p>
+      <div
+        v-for="(user, i) in subscriptions"
+        :key="i"
+        class="col-lg-12 col-md-4 col-6"
+      >
+        <FrendRowBar :user="user" />
       </div>
-      <div class="col-lg-12 col-md-4 col-6">
-        <FrendRowBar />
+      <p v-if="subscriptions.length < 1" class="p-1 m-0">Подписок пока нет</p>
+    </div>
+
+    <!-- Зявки -->
+    <div v-if="applicationCount > 0" class="person-block row g-0">
+      <p class="p-1 m-0">Запросы ({{ applicationCount }})</p>
+      <div v-if="applicationsToMe.length > 0">
+        <p class="p-1 m-0">Ко мне ({{ applicationsToMe.length }})</p>
+        <div
+          v-for="(user, i) in subscriptions"
+          :key="i"
+          class="col-lg-12 col-md-4 col-6"
+        >
+          <FrendRowBar :user="user" />
+        </div>
       </div>
-      <div class="col-lg-12 col-md-4 col-6">
-        <FrendRowBar />
+      <div v-if="applicationsFromMe.length > 0">
+        <p class="p-1 m-0">От меня ({{ applicationsFromMe.length }})</p>
+        <div
+          v-for="(user, i) in subscriptions"
+          :key="i"
+          class="col-lg-12 col-md-4 col-6"
+        >
+          <FrendRowBar :user="user" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import FrendRowBar from "./FrendRowBar.vue";
+import { defineComponent } from 'vue';
+import { IUser } from '../types/types.interfaces';
+import UserService from '../../services/user.service';
+import FrendRowBar from './FrendRowBar.vue';
+import authService from '@/services/auth.service';
 
 export default defineComponent({
-  name: "RightBar",
+  name: 'RightBar',
   components: {
     FrendRowBar,
+  },
+  data() {
+    return {
+      profile: {} as IUser,
+      userId: '' as string | null,
+      authUserId: '' as string | null,
+    };
+  },
+  computed: {
+    subscribers(): IUser[] {
+      return this.profile.subscribers ?? [];
+    },
+    subscriptions(): IUser[] {
+      return this.profile.subscriptions ?? [];
+    },
+    applicationsFromMe(): IUser[] {
+      return this.profile.subscrReqsFromMe ?? [];
+    },
+    applicationsToMe(): IUser[] {
+      return this.profile.subscrReqsToMe ?? [];
+    },
+    applicationCount(): number {
+      return this.applicationsFromMe.length + this.applicationsToMe.length;
+    },
+    haveSubscribeButton(): boolean {
+      return (this.userId != null && this.authUserId != null) && ( this.userId != this.authUserId)
+    }
+  },
+  async created() {
+    try {
+      this.authUserId = await authService.getAuthorizedUserId();
+      if (this.authUserId == null) throw new Error('User id undefined');
+
+      this.userId = this.$route.params.id as string;
+
+      this.profile = await this.getProfile(this.userId);
+      console.log('this.profile');
+      console.log(this.profile);
+    } catch (err) {
+      console.log('Error ', err);
+    }
+  },
+  methods: {
+    async getProfile(userId: string) {
+      return UserService.getProfile(userId);
+    },
+    async follow() {
+      // @ts-ignore
+      return UserService.follow(this.userId)
+    }
   },
 });
 </script>

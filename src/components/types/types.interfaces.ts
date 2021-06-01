@@ -10,3 +10,12 @@ export interface ITableData {
   owner?: string;
   _id?: string;
 }
+
+export interface IUser {
+    _id: string,
+    email: string,
+    subscribers?: IUser[],
+    subscriptions?: IUser[],
+    subscrReqsToMe?: IUser[],
+    subscrReqsFromMe?: IUser[]
+}
