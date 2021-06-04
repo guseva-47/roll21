@@ -49,7 +49,7 @@ export default interface IPixiScene {
         base64str: string,
         x: number,
         y: number,
-        isSnappingGrid: boolean
+        isSnappingGrid: boolean,
     ): boolean;
 
     /** @param name unique image name */

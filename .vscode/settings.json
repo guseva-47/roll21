@@ -1,4 +1,9 @@
 {
   "editor.tabSize": 2,
-  "prettier.tabWidth": 2
+  "files.exclude": {
+    "**/node_modules/": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 4
+  }
 }

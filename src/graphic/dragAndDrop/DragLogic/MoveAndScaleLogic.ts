@@ -1,5 +1,4 @@
-
-import assert from 'assert'
+import assert from 'assert';
 import { DisplayObject, Point } from 'pixi.js';
 import DefaultLoggerBuilder from '../../DefaultLoggerBuilder';
 import IDragLogic from './IDragLogic';
@@ -19,7 +18,7 @@ export default class MoveAndScaleLogic implements IDragLogic {
         this.pointerOffset.y -= draggable.y;
 
         this.logger.info(
-            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`
+            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`,
         );
     }
 
@@ -29,7 +28,9 @@ export default class MoveAndScaleLogic implements IDragLogic {
         if (this.target !== draggable) {
             this.logger.err(
                 'onDragMove: current target id is',
-                `${this.target!.name} but recieved item id is ${draggable.name}`
+                `${this.target!.name} but recieved item id is ${
+                    draggable.name
+                }`,
             );
             return;
         }
@@ -46,13 +47,15 @@ export default class MoveAndScaleLogic implements IDragLogic {
         if (this.target !== draggable) {
             this.logger.err(
                 'onDragEnd: current target id is',
-                `${this.target!.name} but recieved item id is ${draggable.name}`
+                `${this.target!.name} but recieved item id is ${
+                    draggable.name
+                }`,
             );
             return;
         }
 
         this.logger.info(
-            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`
+            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`,
         );
 
         this.target = undefined;

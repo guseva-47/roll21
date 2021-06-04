@@ -14,7 +14,7 @@ export default class ColorAlphaLogic implements IDragLogic {
         draggable.alpha = this.alpha;
 
         this.logger.info(
-            `onDragStart: token '${draggable.name}' alpha: ${draggable.alpha}`
+            `onDragStart: token '${draggable.name}' alpha: ${draggable.alpha}`,
         );
     }
     onDragMove(_draggable: DisplayObject, _globalMousePos: Point): void {}
@@ -22,7 +22,7 @@ export default class ColorAlphaLogic implements IDragLogic {
         draggable.alpha = this.oldAlpha;
 
         this.logger.info(
-            `onDragEnd: token '${draggable.name}' alpha: ${draggable.alpha}`
+            `onDragEnd: token '${draggable.name}' alpha: ${draggable.alpha}`,
         );
     }
 }

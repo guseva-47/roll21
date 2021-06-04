@@ -8,7 +8,7 @@ import DragAndDropArea from '../dragAndDrop/DragAndDropArea';
 import IGridView from '../grid/view/IGridView';
 import SquareGridView from '../grid/view/SquareGridView';
 import ConsoleLogger from '../../logger/ConsoleLogger';
-import assert from 'assert'
+import assert from 'assert';
 
 interface FogOfWarShaderUniforms {
     uObserverAmount: number;
@@ -41,7 +41,7 @@ export default class PixiScene implements IPixiScene {
         rowLen: number,
         columnLen: number,
         cellSize: number,
-        resources: PIXI.IResourceDictionary
+        resources: PIXI.IResourceDictionary,
     ) {
         assert(Number.isInteger(rowLen) && rowLen > 0);
         assert(Number.isInteger(columnLen) && columnLen > 0);
@@ -56,10 +56,17 @@ export default class PixiScene implements IPixiScene {
             .beginFill(0x002000)
             .drawRect(0, 0, width, height);
 
-        const gridColleder = new SquareGridCollider(rowLen, columnLen, cellSize);
+        const gridColleder = new SquareGridCollider(
+            rowLen,
+            columnLen,
+            cellSize,
+        );
 
         const alphaOnDrag = 0.5;
-        const dndLogic = DefaultDnDLogicBuilder.inst.build(gridColleder, alphaOnDrag);
+        const dndLogic = DefaultDnDLogicBuilder.inst.build(
+            gridColleder,
+            alphaOnDrag,
+        );
 
         // drag and drop area
         this.dndArea = new DragAndDropArea(this.foggyContainer, dndLogic);
@@ -88,7 +95,7 @@ export default class PixiScene implements IPixiScene {
         this.fogOfWarShader = new PIXI.Filter(
             resources.vertDefault.data,
             resources.fragFogOfWar.data,
-            uniforms
+            uniforms,
         );
 
         this.fogOfWarSprite = new PIXI.Sprite(this.fogOfWarRT);
@@ -109,7 +116,7 @@ export default class PixiScene implements IPixiScene {
     static async create(
         rowLen: number,
         columnLen: number,
-        cellSize: number
+        cellSize: number,
     ): Promise<PixiScene> {
         const logger = ConsoleLogger.inst;
 
@@ -125,10 +132,12 @@ export default class PixiScene implements IPixiScene {
                 vertDefault: PIXI.LoaderResource;
                 fragFogOfWar: PIXI.LoaderResource;
             };
-            loader.onComplete.add((_loader: PIXI.Loader, resources: Resources) => {
-                logger.info('async init:', resources);
-                resolve();
-            });
+            loader.onComplete.add(
+                (_loader: PIXI.Loader, resources: Resources) => {
+                    logger.info('async init:', resources);
+                    resolve();
+                },
+            );
             loader.onError.add((_loader, err) => {
                 logger.err('async init:', err);
                 reject(err);
@@ -142,7 +151,9 @@ export default class PixiScene implements IPixiScene {
 
     changeLayer(layer: TokenLayerType): void {
         this.logger.info(
-            `change layer ${TokenLayerType[this.layerType]} to ${TokenLayerType[layer]}`
+            `change layer ${TokenLayerType[this.layerType]} to ${
+                TokenLayerType[layer]
+            }`,
         );
 
         this.layerType = layer;
@@ -168,17 +179,24 @@ export default class PixiScene implements IPixiScene {
 
             const observers = this.tokens[TokenLayerType.PLAYER].children;
 
-            const uniforms: FogOfWarShaderUniforms = this.fogOfWarShader.uniforms;
+            const uniforms: FogOfWarShaderUniforms = this.fogOfWarShader
+                .uniforms;
             uniforms.uObserverAmount = observers.length;
             if (observers.length > 0) {
                 uniforms.uObserverPosList = observers.flatMap(({ x, y }) => [
                     x + this.cellSize * 0.5,
                     y + this.cellSize * 0.5,
                 ]);
-                uniforms.uObserverRadiusList = observers.map((_) => visibilityRange);
+                uniforms.uObserverRadiusList = observers.map(
+                    _ => visibilityRange,
+                );
             }
 
-            renderer.render(this.tokens[TokenLayerType.BARRIER], this.barrierRT, true);
+            renderer.render(
+                this.tokens[TokenLayerType.BARRIER],
+                this.barrierRT,
+                true,
+            );
             renderer.render(this.fogOfWarSprite, this.fogOfWarRT, false);
         }
     }
@@ -197,7 +215,13 @@ export default class PixiScene implements IPixiScene {
         this.grid.redraw();
     }
 
-    addToken(name: string, url: string, x: number, y: number, isSnappingGrid: boolean) {
+    addToken(
+        name: string,
+        url: string,
+        x: number,
+        y: number,
+        isSnappingGrid: boolean,
+    ) {
         if (this.hasToken(name)) {
             return false;
         }
@@ -228,7 +252,7 @@ export default class PixiScene implements IPixiScene {
         sprite.height = height;
 
         this.logger.info(
-            `new sprite <id=${sprite.name}, x=${sprite.x}, y=${sprite.y}, w=${sprite.width}, h=${sprite.height}>`
+            `new sprite <id=${sprite.name}, x=${sprite.x}, y=${sprite.y}, w=${sprite.width}, h=${sprite.height}>`,
         );
 
         this.dndArea.attach(sprite);
@@ -238,7 +262,9 @@ export default class PixiScene implements IPixiScene {
     }
 
     removeToken(name: string): boolean {
-        const token: PIXI.DisplayObject | null = this.layer.getChildByName(name);
+        const token: PIXI.DisplayObject | null = this.layer.getChildByName(
+            name,
+        );
         if (token) {
             this.dndArea.detach(token);
             this.layer.removeChild(token);
