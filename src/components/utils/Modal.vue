@@ -1,5 +1,5 @@
 <template>
-  <div class="modal col-6" :ref="frame">
+  <div class="modal col-6" tabindex="0" ref="frame">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="text-truncate">{{ title }}</h2>
@@ -28,7 +28,13 @@ export default defineComponent({
     const onClose = () => emit('close');
     const frame = ref<HTMLElement>();
 
-    onMounted(() => {console.log('>>> frame:', frame.value); frame.value?.focus()});
+    // поставить фокус на модальное окно,
+    // только если фокус не стоит на дочернем желементе
+    onMounted(() => {
+      if (frame.value && !frame.value.contains(document.activeElement)) {
+        frame.value.focus();
+      }
+    });
 
     return { onClose, frame };
   },
