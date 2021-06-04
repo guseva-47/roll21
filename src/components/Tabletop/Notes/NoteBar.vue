@@ -2,13 +2,13 @@
   <!-- Контекстное меню -->
   <context-menu>
     <context-menu-item @itemClickHandle="contextEditItem">
-      редактировать
+      Редактировать
     </context-menu-item>
     <context-menu-item @itemClickHandle="contextDoubleItem">
-      дублировать
+      Дублировать
     </context-menu-item>
     <context-menu-item @itemClickHandle="contextRemoveItem">
-      удалить
+      Удалить
     </context-menu-item>
   </context-menu>
 
@@ -42,7 +42,10 @@
   </div>
 </template>
 
+
 <script lang="ts">
+// TODO bag :  когда удаляешь несколько дублированных записок из списка, появляется ошибка сервера 404
+// при добавлении большого количества записей срколл не появляется
 import {
   INote,
   NoteMode,

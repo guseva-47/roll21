@@ -69,6 +69,19 @@
               @onEdit="readonly = false"
             />
           </div>
+
+          <div v-if="!isViewMode" class="row">
+            <div class="col-auto">
+              Доступно для:
+            </div>
+            <div id="v-model-select" class="col-auto demo">
+              <!-- TODO надписи нормальные -->
+              <select class="form-select form-select-sm" v-model="editedNote.secureMode">
+                <option>all</option>
+                <option>author_only</option>
+              </select>
+            </div>
+          </div>
         </div>
       </template>
     </modal>
@@ -79,6 +92,7 @@
 import { defineComponent, PropType } from 'vue';
 import rfdc from 'rfdc';
 
+// eslint-disable-next-line no-unused-vars
 import { INote, NoteMode } from '@/components/types/types.interfaces';
 import EditableView from '@/components/utils/EditableView.vue';
 import Modal from '@/components/utils/Modal.vue';
@@ -106,6 +120,7 @@ export default defineComponent({
       note: {} as INote,
       editedNote: {} as INote,
       mode: NoteMode.VIEW,
+      selected: ''
     };
   },
   async created() {
@@ -133,14 +148,14 @@ export default defineComponent({
       return false;
     },
     modalTitle(): string {
-      if(this.isCreateMode) return 'Создание';
-      if(this.isEditMode) return 'Изменение';
+      if (this.isCreateMode) return 'Создание';
+      if (this.isEditMode) return 'Изменение';
       return this.editedNote.title;
-    }
+    },
   },
   methods: {
     closeModal() {
-      console.log('close!')
+      console.log('close!');
       this.$emit('closeModal');
     },
     async editModOn() {
@@ -173,7 +188,7 @@ export default defineComponent({
         // eslint-disable-next-line no-undef
         // @ts-ignore
         const result = await this.saveNote(this.editedNote);
-        if(result == null) return;
+        if (result == null) return;
         this.note = clone(result);
         this.editedNote._id = clone(result);
         this.mode = NoteMode.EDIT;
