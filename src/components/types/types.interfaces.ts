@@ -1,6 +1,17 @@
-export enum ToolBarTabs {
-  Files = 1,
-  Tokens = 2,
+export enum NoteMode {
+  VIEW,
+  EDIT,
+  CREATE,
+}
+
+export interface INote {
+  _id: string;
+  title: string;
+  text: string;
+  author: string;
+  tabletop: string;
+  date: Date;
+  secureMode: NoteSecureMode
 }
 
 export interface ITableData {
@@ -12,10 +23,16 @@ export interface ITableData {
 }
 
 export interface IUser {
-    _id: string,
-    email: string,
-    subscribers?: IUser[],
-    subscriptions?: IUser[],
-    subscrReqsToMe?: IUser[],
-    subscrReqsFromMe?: IUser[]
+  _id: string;
+  email: string;
+  subscribers?: IUser[];
+  subscriptions?: IUser[];
+  subscrReqsToMe?: IUser[];
+  subscrReqsFromMe?: IUser[];
 }
+
+export enum NoteSecureMode {
+    author_only = 'author_only',
+    all = 'all'
+}
+

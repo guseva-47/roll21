@@ -1,9 +1,15 @@
 <template>
-  <div class="modal">
+  <div class="modal col-6">
     <div class="modal-content">
       <div class="modal-header">
         <h2>{{ title }}</h2>
-        <span class="close" @click="onClose()">&times;</span>
+        <!-- Кнопки сохранения, отмены и удаления записи -->
+        <div class="d-grid gap-2 d-sm-flex justify-content-end my-2">
+          <slot name='header-buttons'></slot>
+          <button class="btn btn-outline-light" @click="onClose()">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
       </div>
       <div class="modal-body">
         <slot></slot>
@@ -47,7 +53,7 @@ export default defineComponent({
   margin: 15% auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -55,7 +61,7 @@ export default defineComponent({
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #436d6e;
   color: white;
 }
 
@@ -68,7 +74,7 @@ export default defineComponent({
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #436d6e;
   color: white;
 }
 

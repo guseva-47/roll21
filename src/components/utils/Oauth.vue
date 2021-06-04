@@ -19,7 +19,7 @@ export default defineComponent({
       const jwt = this.$route.params.jwt.toString();
       console.log(`jwt: ${jwt}`)
       await mainService.login(jwt);
-      this.$router.go(-1);
+      this.$router.go(-2);
     }
   }
 });

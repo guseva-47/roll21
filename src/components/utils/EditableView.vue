@@ -1,11 +1,11 @@
 <template>
-  <rich-text-viewer
+  <RichTextViewer
     v-if="readonly"
     :content="content"
     @focus="edit()"
     fixedHeight="true"
   />
-  <rich-text-editor v-else v-model:content="content" :focused="true" />
+  <RichTextEditor v-else v-model:content="content" :focused="true" />
 </template>
 
 <script lang="ts">

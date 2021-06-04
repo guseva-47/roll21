@@ -39,6 +39,10 @@
     <div v-if="activeTab == 1">
       content 1
     </div>
+    <div v-if="activeTab == 2">
+      <NoteBar />
+      
+    </div>
   </div>
 </template>
 
@@ -46,15 +50,17 @@
 import { defineComponent } from "vue";
 
 import ImgRow from "./ImgRow.vue";
+import NoteBar from "./Notes/NoteBar.vue";
 
 export default defineComponent({
   name: "ToolBar",
   components: {
     ImgRow,
+    NoteBar
   },
   data() {
     return {
-      activeTab: 0,
+      activeTab: 2,
     };
   },
   methods: {
