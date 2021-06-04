@@ -7,7 +7,7 @@
         <div class="navbar-nav">
           <a
             v-if="!haveUser"
-            href="http://localhost:3000/login"
+            :href="log"
             class="nav-link text-center"
           >
             <i class="bi bi-person p-0 m-0"></i>
@@ -56,7 +56,7 @@ export default defineComponent({
   data() {
     return {
       label: "войти с google",
-      log: "http://localhost:3000/login",
+      log: process.env.VUE_APP_LOGIN_URL,
       id: null,
     };
   },
