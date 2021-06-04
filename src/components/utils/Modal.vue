@@ -2,7 +2,7 @@
   <div class="modal col-6">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>{{ title }}</h2>
+        <h2 class="text-truncate">{{ title }}</h2>
         <!-- Кнопки сохранения, отмены и удаления записи -->
         <div class="d-grid gap-2 d-sm-flex justify-content-end my-2">
           <slot name='header-buttons'></slot>

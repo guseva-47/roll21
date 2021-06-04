@@ -1,22 +1,31 @@
 <template>
-  <div class="container row">
-    <modal title="Добавить заметку" @close="closeModal">
+  <div class="container row" @keyup.esc="closeModal">
+    <modal :title="modalTitle" @close="closeModal">
       <template v-slot:header-buttons>
         <button
-          v-if="!isViewMode"
+          v-if="isViewMode"
+          class="btn btn-outline-darksalmon btn-sm"
+          type="button"
+          @click="editModOn"
+        >
+          <i class="bi bi-wrench"></i>
+        </button>
+        <button
+          v-if="isEditMode"
           class="btn btn-outline-secondary btn-sm"
           type="button"
-          @click="deleteNote"
+          @click="del"
         >
-          Удалить
+          <i class="bi bi-trash"></i>
         </button>
         <button
           v-if="!isViewMode"
           class="btn btn-outline-darksalmon btn-sm"
           type="button"
-          @click="saveNote"
+          @click="sav"
+          :disabled="!haveChanges"
         >
-          Сохранить
+          <i class="bi bi-save"></i> Сохранить
         </button>
       </template>
       <template v-slot:default>
@@ -30,13 +39,13 @@
               v-model="editedNote.title"
               ref="tableTitle"
             />
-            <h4
+            <!-- <h4
               v-else
               class="text-center h4 w-100 form-control-plaintext"
               @click="editModOn"
             >
               {{ note.title }}
-            </h4>
+            </h4> -->
           </div>
 
           <!-- editedNote.text -->
@@ -57,7 +66,7 @@
               v-else
               v-model:htmlContent="editedNote.text"
               :readonly="isViewMode"
-              @onEdit="editModOn"
+              @onEdit="readonly = false"
             />
           </div>
         </div>
@@ -71,9 +80,6 @@ import { defineComponent, PropType } from 'vue';
 import rfdc from 'rfdc';
 
 import { INote, NoteMode } from '@/components/types/types.interfaces';
-// eslint-disable-next-line no-unused-vars
-import authService from '@/services/auth.service'; // TODO
-import noteService from '@/services/note.service';
 import EditableView from '@/components/utils/EditableView.vue';
 import Modal from '@/components/utils/Modal.vue';
 
@@ -83,26 +89,28 @@ export default defineComponent({
   name: 'NoteViewEdit',
   components: { Modal, EditableView },
   props: {
-    note: { type: Object as PropType<INote>, required: true },
+    initNote: { type: Object as PropType<INote>, required: true },
     initMode: {
       type: Number as PropType<NoteMode>,
       required: true,
       default: NoteMode.VIEW,
     },
     tableId: { type: String, required: true },
-    // eslint-disable-next-line no-undef
-    // @ts-ignore
-    updateNotes: {},
+
+    deleteNote: {},
+    saveNote: {},
   },
   emits: ['closeModal'],
   data() {
     return {
+      note: {} as INote,
       editedNote: {} as INote,
       mode: NoteMode.VIEW,
     };
   },
   async created() {
-    this.editedNote = clone(this.note);
+    this.note = clone(this.initNote);
+    this.editedNote = clone(this.initNote);
     this.mode = this.initMode;
   },
   computed: {
@@ -118,9 +126,21 @@ export default defineComponent({
     isViewMode(): boolean {
       return this.mode == NoteMode.VIEW;
     },
+    haveChanges(): boolean {
+      if (this.note.title != this.editedNote.title) return true;
+      if (this.note.text != this.editedNote.text) return true;
+      if (this.note.secureMode != this.editedNote.secureMode) return true;
+      return false;
+    },
+    modalTitle(): string {
+      if(this.isCreateMode) return 'Создание';
+      if(this.isEditMode) return 'Изменение';
+      return this.editedNote.title;
+    }
   },
   methods: {
     closeModal() {
+      console.log('close!')
       this.$emit('closeModal');
     },
     async editModOn() {
@@ -137,51 +157,28 @@ export default defineComponent({
       this.mode = NoteMode.VIEW;
       this.editedNote = clone(this.note);
     },
-
-    async deleteNote() {
+    async del() {
       try {
-        console.log('delete note from server');
-        await noteService.deleteNote(this.editedNote._id);
+        // eslint-disable-next-line no-undef
+        // @ts-ignore
+        await this.deleteNote(this.editedNote);
         this.closeModal();
-        // if (typeof this.table._id == 'undefined')
-        //   throw new Error('Tabletop id is undefined');
-
-        // await TabletopService.deleteNotetop(this.table._id);
       } catch (err) {
-        console.log('Error delete note:', err);
-        // this.$router.push({ name: 'Login' });
+        console.log(err);
       }
-      //@ts-ignore
-      this.updateNotes()
     },
-
-    async saveNote() {
+    async sav() {
       try {
-        console.log('save note in server');
-        const userId = await authService.getAuthorizedUserId();
-        if (userId == null) return;
-
-        this.editedNote.date = new Date();
-        this.editedNote.tabletop = this.tableId;
-        try {
-          // проверка на наличие прав на редактирование. или не нужна
-          if (this.editedNote._id == '-1') {
-            this.editedNote.author = userId;
-            this.editedNote = await noteService.postNoteOnTable(this.editedNote);
-          } else {
-            this.editedNote = await noteService.putNoteOnTable(this.editedNote);
-          }
-          //@ts-ignore
-          this.updateNotes()
-        } catch (err) {
-          console.log(err);
-        }
-        // проверить есть id или нет, в зависимости от этого сделать post или put
-        // todo перед отправкой на сервер задисэйблить окно
-        // при получении положительного ответа изменить id записки на новую
+        // todo запретить ввод, пока сохранение на сервер не подтвердится успехом
+        // eslint-disable-next-line no-undef
+        // @ts-ignore
+        const result = await this.saveNote(this.editedNote);
+        if(result == null) return;
+        this.note = clone(result);
+        this.editedNote._id = clone(result);
+        this.mode = NoteMode.EDIT;
       } catch (err) {
-        console.log('Error create note:', err);
-        // this.$router.push({ name: 'Login' });
+        console.log(err);
       }
     },
   },

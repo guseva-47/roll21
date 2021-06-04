@@ -9,6 +9,7 @@ import Tabletop from "../components/Tabletop/Tabletop.vue";
 import EditorExample from "../components/EditorExample.vue";
 import Oauth from "../components/utils/Oauth.vue";
 import Login from "../components/utils/Login.vue";
+import Dropdown from '../components/utils/dropdown.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -60,6 +61,7 @@ const routes: Array<RouteRecordRaw> = [
   // { path: "/profile", redirect: { name: "Main" } }, // todo, по-хорошему, надо переводить а страницу пользователя, я думаю
   // { path: "/table", redirect: { name: "Main" } }, // todo
   { path: "/login", name: "Login", component: Login }, // todo настоящая страница логин
+  { path: "/test", name: "Dropdown", component: Dropdown },
 ];
 
 const router = createRouter({
