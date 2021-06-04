@@ -48,12 +48,12 @@ export default class CursorViewLogic implements IDragLogic {
 
     onDragStart(draggable: DisplayObject, _globalMousePos: Point): void {
         this.logger.info(
-            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`
+            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`,
         );
 
         this.logger.debug('mouse style:', document.body.style.cursor);
 
-        const index = cursorStyles.findIndex((value) => {
+        const index = cursorStyles.findIndex(value => {
             return value === document.body.style.cursor;
         });
         const nextIndex = (index + 1) % cursorStyles.length;
@@ -66,7 +66,7 @@ export default class CursorViewLogic implements IDragLogic {
     onDragMove(_draggable: DisplayObject, _globalMousePos: Point): void {}
     onDragEnd(draggable: DisplayObject, _globalMousePos: Point): void {
         this.logger.info(
-            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`
+            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]:`,
         );
     }
 }

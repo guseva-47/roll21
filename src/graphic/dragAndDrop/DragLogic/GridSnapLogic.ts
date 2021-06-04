@@ -17,7 +17,7 @@ export default class GridSnapLogic extends DecoratorLogic {
         super.onDragStart(draggable, globalMousePos);
 
         this.logger.info(
-            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]`
+            `onDragStart: token '${draggable.name}' [${draggable.x}, ${draggable.y}]`,
         );
     }
 
@@ -32,7 +32,7 @@ export default class GridSnapLogic extends DecoratorLogic {
         super.onDragEnd(draggable, globalMousePos);
 
         this.logger.info(
-            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]`
+            `onDragEnd: token '${draggable.name}' [${draggable.x}, ${draggable.y}]`,
         );
     }
 }

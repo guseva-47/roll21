@@ -1,11 +1,11 @@
 <template>
-  <div class="modal col-6">
+  <div class="modal col-6" :ref="frame">
     <div class="modal-content">
       <div class="modal-header">
         <h2>{{ title }}</h2>
         <!-- Кнопки сохранения, отмены и удаления записи -->
         <div class="d-grid gap-2 d-sm-flex justify-content-end my-2">
-          <slot name='header-buttons'></slot>
+          <slot name="header-buttons"></slot>
           <button class="btn btn-outline-light" @click="onClose()">
             <i class="bi bi-x-lg"></i>
           </button>
@@ -19,14 +19,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
   props: { title: String },
   emits: { close: null },
   setup(props, { emit }) {
     const onClose = () => emit('close');
-    return { onClose };
+    const frame = ref<HTMLElement>();
+
+    onMounted(() => {console.log('>>> frame:', frame.value); frame.value?.focus()});
+
+    return { onClose, frame };
   },
 });
 </script>

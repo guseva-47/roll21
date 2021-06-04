@@ -13,8 +13,8 @@ export default class CompositeLogic implements IDragLogic {
     }
 
     remove(...itemsToRemove: IDragLogic[]) {
-        this.logicItems = this.logicItems.filter((item) => {
-            return itemsToRemove.findIndex((removing) => removing === item) < 0;
+        this.logicItems = this.logicItems.filter(item => {
+            return itemsToRemove.findIndex(removing => removing === item) < 0;
         });
     }
 

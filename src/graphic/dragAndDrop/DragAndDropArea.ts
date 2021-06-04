@@ -1,5 +1,4 @@
-
-import assert from 'assert'
+import assert from 'assert';
 import { Container, DisplayObject } from 'pixi.js';
 import IClosable from '../../common/IClosable';
 import DefaultLoggerBuilder from '../DefaultLoggerBuilder';
@@ -45,7 +44,10 @@ export default class DragAndDropArea implements IClosable {
     }
 
     detach(draggableObject: DisplayObject) {
-        this.displayObjects.splice(this.displayObjects.indexOf(draggableObject), 1);
+        this.displayObjects.splice(
+            this.displayObjects.indexOf(draggableObject),
+            1,
+        );
 
         draggableObject.interactive = false;
         draggableObject.buttonMode = false;
@@ -57,7 +59,7 @@ export default class DragAndDropArea implements IClosable {
     }
 
     hasObject(name: string): boolean {
-        return this.displayObjects.findIndex((value) => value.name === name) >= 0;
+        return this.displayObjects.findIndex(value => value.name === name) >= 0;
     }
 
     private readonly onSpriteDragStart = (e: PIXI.InteractionEvent) => {

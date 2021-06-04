@@ -3,8 +3,7 @@ import DefaultLoggerBuilder from './DefaultLoggerBuilder';
 import IResizable from '../common/IResizable';
 import IClosable from '../common/IClosable';
 import IPixiScene, { TokenLayerType } from './scene/IPixiScene';
-import assert from 'assert'
-
+import assert from 'assert';
 
 export interface IPixiViewport extends IResizable, IClosable {
     isSnappingGrid: boolean;
@@ -35,7 +34,7 @@ export default class PixiApp implements IPixiViewport {
     constructor(
         root: HTMLElement,
         scene: IPixiScene,
-        { width, height }: OptionalParams = {}
+        { width = root.clientWidth, height }: OptionalParams = {},
     ) {
         this.root = root;
 
@@ -48,7 +47,7 @@ export default class PixiApp implements IPixiViewport {
 
         this.setScene(scene);
 
-        this.app.ticker.add( () => {
+        this.app.ticker.add(() => {
             this.scene.render(this.app.renderer);
         });
     }

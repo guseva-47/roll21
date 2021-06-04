@@ -16,7 +16,7 @@ export default class DefaultDnDLogicBuilder {
     build(grid: IGridCollider, alphaOnDrag: number): IDragLogic {
         return new CompositeLogic(
             new GridSnapLogic(new MoveAndScaleLogic(), grid),
-            new ColorAlphaLogic(alphaOnDrag)
+            new ColorAlphaLogic(alphaOnDrag),
         );
     }
 
