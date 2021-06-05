@@ -31,7 +31,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .Tabletop {
-  background-color: pink;
   flex: 1 0 auto;
 }
 

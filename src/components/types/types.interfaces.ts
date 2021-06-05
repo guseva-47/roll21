@@ -36,3 +36,9 @@ export enum NoteSecureMode {
     all = 'all'
 }
 
+export interface INewMapParam {
+    title: string,
+    widthCount: number,
+    heightCount: number,
+}
+

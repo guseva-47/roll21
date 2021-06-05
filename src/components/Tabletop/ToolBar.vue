@@ -1,18 +1,18 @@
 <template>
   <div class="toolBar">
-    <ul class="nav nav-tabs tt">
-      <li class="nav-item t">
+    <ul class="nav nav-tabs small tool-bar-nav">
+      <li class="nav-item">
         <button
-          class="nav-link p-2"
+          class="nav-link p-2 not-link"
           v-bind:class="{ active: activeTab == 0 }"
           @click="activeTab = 0"
         >
-          <i class="bi bi-file-earmark-arrow-down"></i>
+          <i class="bi bi-file-earmark-arrow-down active"></i>
         </button>
       </li>
       <li class="nav-item">
         <button
-          class="nav-link p-2"
+          class="nav-link p-2 not-link"
           v-bind:class="{ active: activeTab == 1 }"
           @click="activeTab = 1"
         >
@@ -21,7 +21,7 @@
       </li>
       <li class="nav-item">
         <button
-          class="nav-link p-2"
+          class="nav-link p-2 not-link"
           v-bind:class="{ active: activeTab == 2 }"
           @click="activeTab = 2"
         >
@@ -74,10 +74,21 @@ export default defineComponent({
   min-height: 100%;
   background-color: #436d6e;
 }
-.t {
+.tool-bar-nav {
+  background-color: #2a4747;
+}
+.not-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.not-link:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.not-link:hover {
   background-color: #436d6e;
 }
-.tt {
-  background-color: #2a4747;
+.active:hover {
+  background-color: #ffffff;
 }
 </style>
