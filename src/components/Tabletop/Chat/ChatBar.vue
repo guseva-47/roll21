@@ -5,7 +5,7 @@
     <div v-for="(mes, i) in allMessages" :key="i" class="mes p-1 text-truncate">
       {{ mes.text }}
     </div>
-    
+
     <!-- Строка сообщения -->
     <div class="d-flex bd-highlight align-items-center p-0">
       <div class="flex-fill bd-highlight">
@@ -17,7 +17,10 @@
         />
       </div>
       <div class="flex bd-highlight">
-        <button class="col-form-label btn btn-outline-warning px-0">
+        <button
+          class="col-form-label btn btn-outline-warning px-0"
+          @click="sendMessage"
+        >
           <i class="bi bi-arrow-return-left"></i>
         </button>
       </div>
@@ -31,6 +34,9 @@
 import { IMessage } from '@/components/types/types.interfaces';
 import { defineComponent } from 'vue';
 import authService from '@/services/auth.service';
+import messageService from '@/services/message.service';
+
+declare const io: any;
 
 export default defineComponent({
   name: 'ChatBar',
@@ -40,27 +46,37 @@ export default defineComponent({
       allMessages: [] as IMessage[],
       tableId: '',
       newMessage: {} as IMessage,
+      socket: {} as any,
     };
   },
   async created() {
     this.tableId = this.$route.params.idTable as string;
     await this.getAllMessages();
+
+    console.log('Starting connection to WebSocket Server');
+    this.socket = io('http://localhost:3000');
+    // @ts-ignore
+    this.socket.on('message', ({ data }) => {
+      // console.log('answer Server');
+      // console.log(data);
+      this.allMessages.push(data);
+    });
+
+    // this.connection.onmessage = function(event) {
+    //   console.log(event);
+    // };
+
+    // this.connection.onopen = function(event) {
+    //   console.log(event);
+    //   console.log('Successfully connected to the echo websocket server...');
+    // };
   },
   methods: {
     async getAllMessages() {
       try {
-        this.allMessages = [
-          {
-            text: 'hello 11111',
-            authorId: '60b008da17d44b26648cc97f',
-            date: new Date(2021, 6, 5, 15, 15),
-          },
-          {
-            text: 'hello 2222',
-            authorId: '60b008da17d44b26648cc97f',
-            date: new Date(2021, 6, 5, 15, 20),
-          },
-        ];
+        this.allMessages = await messageService.getMessagesOnTable(
+          this.tableId,
+        );
       } catch (err) {
         console.log(err);
       }
@@ -70,10 +86,15 @@ export default defineComponent({
       const idUser = await authService.getAuthorizedUserId();
       if (idUser == null) return;
 
-      this.newMessage.authorId = idUser;
+      this.newMessage._id = '-1';
+      this.newMessage.author = idUser;
       this.newMessage.date = new Date();
+      this.newMessage.tabletop = this.tableId;
 
-      console.log('отправка сообщения на сервер');
+      console.log('this.newMessage');
+      console.log(this.newMessage);
+
+      this.socket.emit('message', { data: this.newMessage });
     },
   },
 });

@@ -37,14 +37,16 @@ export enum NoteSecureMode {
 }
 
 export interface INewMapParam {
-    title: string,
-    widthCount: number,
-    heightCount: number,
+    title: string;
+    widthCount: number;
+    heightCount: number;
 }
 
 export interface IMessage {
-    text: string,
-    authorId: string,
-    date: Date,
+    _id: string;
+    text: string;
+    author: string;
+    tabletop: string;
+    date: Date;
 }
 
