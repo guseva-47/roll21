@@ -16,7 +16,7 @@
           v-bind:class="{ active: activeTab == 1 }"
           @click="activeTab = 1"
         >
-          <i class="bi bi-box"></i>
+          <i class="bi bi-chat"></i>
         </button>
       </li>
       <li class="nav-item">
@@ -37,11 +37,10 @@
       <ImgRow />
     </div>
     <div v-if="activeTab == 1">
-      content 1
+      <ChatBar />
     </div>
     <div v-if="activeTab == 2">
       <NoteBar />
-      
     </div>
   </div>
 </template>
@@ -51,16 +50,18 @@ import { defineComponent } from "vue";
 
 import ImgRow from "./ImgRow.vue";
 import NoteBar from "./Notes/NoteBar.vue";
+import ChatBar from "./Chat/ChatBar.vue";
 
 export default defineComponent({
   name: "ToolBar",
   components: {
     ImgRow,
-    NoteBar
+    NoteBar,
+    ChatBar
   },
   data() {
     return {
-      activeTab: 2,
+      activeTab: 1,
     };
   },
   methods: {

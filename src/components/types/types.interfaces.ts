@@ -42,3 +42,9 @@ export interface INewMapParam {
     heightCount: number,
 }
 
+export interface IMessage {
+    text: string,
+    authorId: string,
+    date: Date,
+}
+
