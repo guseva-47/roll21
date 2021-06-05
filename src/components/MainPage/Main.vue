@@ -2,7 +2,7 @@
   <div class="Main container-xxl">
     <!-- Мои игры -->
     <div class="mt-3">
-      <router-link to="/profile/id" class="not-link">
+      <router-link :to="{ name: 'ProfId', params: { id: userId } }" class="not-link">
         <h4 class="p-0 m-0">Мои игры</h4>
       </router-link>
       <div

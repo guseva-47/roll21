@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <router-link :to="{ name: 'Go', params: { idTable: table._id } }">
+    <router-link :to="{ name: 'TableProfId', params: { idTable: table._id } }">
       <img class="card-img-top" src="http://placehold.it/70x30" alt="" />
     </router-link>
     <div class="card-body p-1">
       <router-link
-        :to="{ name: 'Go', params: { idTable: table._id } }"
+        :to="{ name: 'TableProfId', params: { idTable: table._id } }"
         class="not-link"
       >
         <h5 class="card-title text-truncate">{{ table.name }}</h5>
