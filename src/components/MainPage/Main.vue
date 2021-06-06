@@ -1,5 +1,5 @@
 <template>
-  <div class="Main container-xxl">
+  <div class="container-xxl">
     <!-- Мои игры -->
     <div class="mt-3">
       <router-link :to="{ name: 'ProfId', params: { id: userId } }" class="not-link">

@@ -72,7 +72,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .toolBar {
-  min-height: 100%;
+  height: 88vh;
   background-color: #436d6e;
 }
 .tool-bar-nav {
@@ -92,4 +92,5 @@ export default defineComponent({
 .active:hover {
   background-color: #ffffff;
 }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <header>
     <!-- TODO  хедер и футтер заканчиваются не по одной линии справа. верх вылезает вправо-->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0">
       <div class="container-xxl">
         <router-link to="/" class="navbar-brand">Tabletop</router-link>
         <div class="navbar-nav">

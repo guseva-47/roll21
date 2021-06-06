@@ -4,13 +4,13 @@
     <div class="row p-3 col-xxl-6 col-xl-6 col-lg-8 col-10 wrapper-form">
       <h3 class="px-2">Параметры новой сцены</h3>
       <!-- Строка с названием сцены -->
-      <div class="d-flex bd-highlight align-items-center p-2">
-        <div class="flex bd-highlight">
+      <div class="d-flex align-items-center p-2">
+        <div class="flex">
           <label class="col-form-label">
             Название сцены
           </label>
         </div>
-        <div class="flex-fill bd-highlight ps-2">
+        <div class="flex-fill ps-2">
           <input
             class="form-control"
             placeholder="Сцена 1"
@@ -20,13 +20,13 @@
       </div>
 
       <!-- Строка с размерами поля -->
-      <div class="d-flex bd-highlight align-items-center p-2">
-        <div class="flex bd-highlight">
+      <div class="d-flex align-items-center p-2">
+        <div class="flex">
           <label class="col-form-label">
             Клеток по ширине
           </label>
         </div>
-        <div class="flex-fill bd-highlight ps-2">
+        <div class="flex-fill ps-2">
           <input
             class="form-control"
             placeholder="70"
@@ -35,12 +35,12 @@
         </div>
         <label class="col-1 col-form-label ps-1">шт.</label>
 
-        <div class="flex bd-highlight ps-2">
+        <div class="flex ps-2">
           <label class="col-form-label">
             по высоте
           </label>
         </div>
-        <div class="flex-fill bd-highlight ps-2">
+        <div class="flex-fill ps-2">
           <input
             class="form-control"
             placeholder="70"
