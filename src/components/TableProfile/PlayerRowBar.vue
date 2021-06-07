@@ -12,7 +12,7 @@
     <div class="col p-0">
       <p>
         <router-link class="not-link" to="/profile/id">
-          Иванов Иван
+          {{player.user}}
         </router-link>
         <br />
         игрок
@@ -40,10 +40,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import { IPlayer } from "../types/types.interfaces";
 
 export default defineComponent({
   name: "PlayerRowBar",
+  props: { player: {type: Object as PropType<IPlayer>}}
 });
 </script>
 

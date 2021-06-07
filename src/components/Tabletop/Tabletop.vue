@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-10 p-0">
-          <Map />
+          <MapController />
         </div>
       </div>
     </div>
@@ -18,13 +18,13 @@
 import { defineComponent } from "vue";
 
 import ToolBar from "./ToolBar.vue";
-import Map from "./Map.vue";
+import MapController from "./MapController.vue";
 
 export default defineComponent({
   name: "Tabletop",
   components: {
     ToolBar,
-    Map,
+    MapController,
   },
 });
 </script>

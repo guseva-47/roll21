@@ -1,39 +1,43 @@
 export enum NoteMode {
-  VIEW,
-  EDIT,
-  CREATE,
+    VIEW,
+    EDIT,
+    CREATE,
 }
 
 export interface INote {
-  _id: string;
-  title: string;
-  text: string;
-  author: string;
-  tabletop: string;
-  date: Date;
-  secureMode: NoteSecureMode
+    _id: string;
+    title: string;
+    text: string;
+    author: string;
+    tabletop: string;
+    date: Date;
+    secureMode: NoteSecureMode;
 }
 
 export interface ITableData {
-  name: string;
-  aboutInfo?: string;
-  gameSystem?: string;
-  owner?: string;
-  _id?: string;
+    _id?: string;
+    name: string;
+    aboutInfo?: string;
+    owner?: string;
+    players?: Array<IPlayer>;
+}
+
+export interface IPlayer {
+    user: string;
 }
 
 export interface IUser {
-  _id: string;
-  email: string;
-  subscribers?: IUser[];
-  subscriptions?: IUser[];
-  subscrReqsToMe?: IUser[];
-  subscrReqsFromMe?: IUser[];
+    _id: string;
+    email: string;
+    subscribers?: IUser[];
+    subscriptions?: IUser[];
+    subscrReqsToMe?: IUser[];
+    subscrReqsFromMe?: IUser[];
 }
 
 export enum NoteSecureMode {
     author_only = 'author_only',
-    all = 'all'
+    all = 'all',
 }
 
 export interface INewMapParam {
@@ -49,4 +53,3 @@ export interface IMessage {
     tabletop: string;
     date: Date;
 }
-

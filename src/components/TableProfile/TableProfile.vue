@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-2">
     <div class="">
       <img
         class="img-fluid rounded mx-auto d-block"
@@ -88,88 +88,85 @@
         </div>
       </div>
     </div>
-    <h3 class="h3 row accordion-btn">
-      <div
-        class="btn btn-outline-secondary d-flex justify-content-between"
-        v-bind:class="{ 'btn-secondary': isOpenAccordion }"
-        @click="isOpenAccordion = !isOpenAccordion"
-      >
-        Настройки
-        <i v-if="!isOpenAccordion" class="bi bi-chevron-down"></i>
-        <i v-else class="bi bi-chevron-up"></i>
-      </div>
-    </h3>
-    <div class="accordion-body" v-if="isOpenAccordion">
-      <div class="row mb-3 pad">
-        <label for="system" class="col-auto col-form-label">
-          Игровая система:
-        </label>
-        <div class="col-auto">
-          <select
-            id="system"
-            class="form-select btn-secondary ff"
-            v-model="system"
-          >
-            <option
-              v-for="item in ['1', '2']"
-              :key="item"
-              class="btn-secondary"
-            >
-              {{ item }}
-            </option>
-          </select>
+    <div v-if="isOwner">
+      <h3 class="h3 row accordion-btn">
+        <div
+          class="btn btn-outline-secondary d-flex justify-content-between"
+          v-bind:class="{ 'btn-secondary': isOpenAccordion }"
+          @click="isOpenAccordion = !isOpenAccordion"
+        >
+          Настройки
+          <i v-if="!isOpenAccordion" class="bi bi-chevron-down"></i>
+          <i v-else class="bi bi-chevron-up"></i>
         </div>
+      </h3>
+      <div class="accordion-body" v-if="isOpenAccordion">
+        <TableSetting :table="table" @deleteTable="deleteTable" @editModOn="editModOn" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import rfdc from "rfdc";
+import { defineComponent } from 'vue';
+import rfdc from 'rfdc';
 
-import { ITableData } from "../types/types.interfaces";
-import TabletopService from "../../services/tabletop.service";
-import tabletopService from "../../services/tabletop.service";
-import authService from "@/services/auth.service";
-import EditableView from "../utils/EditableView.vue";
+import { ITableData } from '../types/types.interfaces';
+import TabletopService from '../../services/tabletop.service';
+import tabletopService from '../../services/tabletop.service';
+import authService from '@/services/auth.service';
+import EditableView from '../utils/EditableView.vue';
+import TableSetting from './TableSetting.vue';
 
 const clone = rfdc();
 
 export default defineComponent({
-  name: "TableProfile",
-  components: { EditableView },
+  name: 'TableProfile',
+  components: { EditableView, TableSetting },
   data() {
     return {
-      isOpenAccordion: false,
+      isOpenAccordion: true,
       isCreateMode: false,
       isEditMode: false,
-      system: "" as string,
-      table: { name: "name", aboutInfo: "aboutInfo" } as ITableData,
+
+      table: { name: 'name', aboutInfo: 'aboutInfo' } as ITableData,
       editedTable: {} as ITableData,
+      userId: '',
     };
   },
   async created() {
     const tableId = this.$route.params.idTable;
-    this.isCreateMode = tableId == "-1";
+    this.isCreateMode = tableId == '-1';
     if (this.isCreateMode)
-      this.table = { name: "NEW", aboutInfo: "NEW ab ou tI nfo" };
+      this.table = { name: 'NEW', aboutInfo: 'NEW ab ou tI nfo' };
     else {
-      console.log("tableId = ", tableId);
+      console.log('tableId = ', tableId);
       // получить от сервера
       try {
         this.table = await tabletopService.getTabletop(tableId as string);
       } catch (err) {
-        console.log("Error get table:", err);
-        this.$router.push({ name: "Login" });
+        console.log('Error get table:', err);
+        this.$router.push({ name: 'Login' });
       }
     }
 
     this.editedTable = clone(this.table);
+
+    const id = await authService.getAuthorizedUserId();
+    this.userId = id == null ? '' : id;
   },
   computed: {
     isEmptyName(): boolean {
       return this.editedTable.name.length <= 0;
+    },
+    isOwner(): boolean {
+      if (typeof this.table.owner == 'undefined') return false;
+      return this.userId == this.table.owner;
+    },
+    isOnlyGamer(): boolean {
+      const players = this.table.players ?? [];
+      const user = players.find(item => item.user == this.userId);
+      return typeof user !== 'undefined';
     },
   },
   methods: {
@@ -194,45 +191,45 @@ export default defineComponent({
         this.table = clone(this.editedTable);
         this.editModOff();
       } catch (err) {
-        console.log("Error save table:", err);
-        this.$router.push({ name: "Login" });
+        console.log('Error save table:', err);
+        this.$router.push({ name: 'Login' });
       }
     },
 
     async deleteTable() {
       try {
-        if (typeof this.table._id == "undefined")
-          throw new Error("Tabletop id is undefined");
+        if (typeof this.table._id == 'undefined')
+          throw new Error('Tabletop id is undefined');
 
         await TabletopService.deleteTabletop(this.table._id);
       } catch (err) {
-        console.log("Error delete table:", err);
-        this.$router.push({ name: "Login" });
+        console.log('Error delete table:', err);
+        this.$router.push({ name: 'Login' });
       }
 
       const id = await authService.getAuthorizedUserId();
-      if (id == null) this.$router.push({ name: "Login" });
+      if (id == null) this.$router.push({ name: 'Login' });
       // @ts-ignore
-      this.$router.push({ name: "ProfId", params: { id: id } });
+      this.$router.push({ name: 'ProfId', params: { id: id } });
     },
 
     async saveNew() {
       try {
         this.table = await TabletopService.postTabletop(this.editedTable);
         console.log(this.table);
-        if (typeof this.table._id == "undefined")
-          throw new Error("Id of new table == undefined");
+        if (typeof this.table._id == 'undefined')
+          throw new Error('Id of new table == undefined');
         this.editedTable = clone(this.table);
 
         this.editModOff();
 
         this.$router.push({
-          name: "TableProfId",
+          name: 'TableProfId',
           params: { idTable: this.table._id },
         });
       } catch (err) {
-        console.log("Error create table:", err);
-        this.$router.push({ name: "Login" });
+        console.log('Error create table:', err);
+        this.$router.push({ name: 'Login' });
       }
     },
 
