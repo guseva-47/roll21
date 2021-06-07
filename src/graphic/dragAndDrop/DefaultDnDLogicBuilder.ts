@@ -1,9 +1,9 @@
 import IGridCollider from '../grid/collider/IGridCollider';
-import MoveAndScaleLogic from '../dragAndDrop/DragLogic/MoveAndScaleLogic';
-import ColorAlphaLogic from '../dragAndDrop/DragLogic/ColorAlphaLogic';
-import CompositeLogic from '../dragAndDrop/DragLogic/CompositeLogic';
-import GridSnapLogic from '../dragAndDrop/DragLogic/GridSnapLogic';
-import IDragLogic from '../dragAndDrop/DragLogic/IDragLogic';
+import MoveAndScaleLogic from './DragLogic/MoveAndScaleLogic';
+import ColorAlphaLogic from './DragLogic/ColorAlphaLogic';
+import CompositeLogic from './DragLogic/CompositeLogic';
+import GridSnapLogic from './DragLogic/GridSnapLogic';
+import IDragLogic from './DragLogic/IDragLogic';
 
 export default class DefaultDnDLogicBuilder {
     static get inst(): DefaultDnDLogicBuilder {
