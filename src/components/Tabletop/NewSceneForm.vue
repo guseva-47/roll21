@@ -29,7 +29,7 @@
         <div class="flex-fill ps-2">
           <input
             class="form-control"
-            placeholder="70"
+            placeholder="20"
             v-model="mapParams.widthCount"
           />
         </div>
@@ -43,7 +43,7 @@
         <div class="flex-fill ps-2">
           <input
             class="form-control"
-            placeholder="70"
+            placeholder="20"
             v-model="mapParams.heightCount"
           />
         </div>
