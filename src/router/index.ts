@@ -10,6 +10,7 @@ import EditorExample from '../components/EditorExample.vue';
 import Oauth from '../components/utils/Oauth.vue';
 import Login from '../components/utils/Login.vue';
 import Dropdown from '../components/utils/dropdown.vue';
+import Map from '@/components/Tabletop/Map.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -64,6 +65,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/test', name: 'Dropdown', component: Dropdown },
 
     { path: '/test/tabletop', component: Tabletop },
+    { path: '/test/map', component: Map },
 ];
 
 const router = createRouter({
