@@ -1,11 +1,13 @@
 <template>
   <div
     class="mes row m-0 px-1"
-    v-bind:class="{ 'text-end': isMe, chaet: isChet, neChet: !isChet }"
+    v-bind:class="{ 'text-end': isMe, chet: isChet }"
   >
     <div class="p-0 m-0 text-break boild">
-      <strong>{{ authorName }}</strong>
-      
+      <strong
+        ><i v-if="!isMe" class="bi bi-chat-left small"></i> {{ authorName }}
+        <i v-if="isMe" class="bi bi-chat-right small"></i
+      ></strong>
     </div>
     <div class="p-0 text-break">
       {{ message.text }}
@@ -37,7 +39,7 @@ export default defineComponent({
       return this.message.author == this.userId;
     },
     authorName(): string {
-      if (this.isMe) return 'я';
+      if (this.isMe) return '';
       return this.message.author.slice(-4);
     },
     isChet(): boolean {
@@ -51,16 +53,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .mes {
   color: #ffffff;
-}
-.mes:hover {
-  border-color: #2a4747;
-  background-color: #2a4747;
-  color: white;
-}
-.chet {
   background-color: #315453;
 }
-.neChet {
+.chet {
   background-color: #396162;
 }
 </style>
