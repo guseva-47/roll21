@@ -1,21 +1,27 @@
 <template>
-  <div>
-    <h1>LOGIN</h1>
+  <div class="container-xxl ">
+    <div class="p-4">
+      <p class="col-6">
+        Произошла какая-то ошибка при выполнении операции. Возможно вы не
+        авторизированы, или срок авторизации истек. Хотите авторизоваться?
+      </p>
+      <a :href="log" class="btn btn-outline-light btn-lg">
+        Авторизоваться
+      </a>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Login",
+  name: 'Login',
   data() {
-    return {};
+    return {
+      log: process.env.VUE_APP_LOGIN_URL,
+    };
   },
-  created() {
-    console.log("login page")
-  },
-  methods: {
-  }
+  methods: {},
 });
 </script>

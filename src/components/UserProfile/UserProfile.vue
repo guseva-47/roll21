@@ -66,7 +66,7 @@ export default defineComponent({
     if (this.userId != null) {
       this.allTabletops = await tabletopService.getAllTabletops(this.userId); // TODO
       console.log(this.allTabletops)
-    }
+    } else this.$router.push({ name: 'Login' });
   },
 });
 </script>
