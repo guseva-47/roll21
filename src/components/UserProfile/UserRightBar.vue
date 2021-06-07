@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="row m-0">
     <div class="person-block row">
       <div class="col-auto">
         <img
@@ -12,9 +12,13 @@
         <p>Иванов Иван</p>
         <!-- <p>Комментарий заказчика</p> -->
       </div>
-      <button v-if="haveSubscribeButton" @click="follow" class="btn btn-outline-success btn-lg p-1 my-2">
-      Подписаться
-    </button>
+      <button
+        v-if="haveSubscribeButton"
+        @click="follow"
+        class="btn btn-outline-success btn-lg p-1 my-2"
+      >
+        Подписаться
+      </button>
     </div>
 
     <!-- Подписчики -->
@@ -67,6 +71,15 @@
         </div>
       </div>
     </div>
+
+    <!-- Выйти -->
+    <button
+        v-if="isMyProfie"
+        @click="logout"
+        class="btn btn-outline-secondary btn-lg p-1 my-2"
+      >
+        Выйти
+      </button>
   </div>
 </template>
 
@@ -85,11 +98,14 @@ export default defineComponent({
   data() {
     return {
       profile: {} as IUser,
-      userId: '' as string | null,
+      userIdPage: '' as string | null,
       authUserId: '' as string | null,
     };
   },
   computed: {
+    isMyProfie(): boolean {
+      return this.userIdPage == this.authUserId;
+    },
     subscribers(): IUser[] {
       return this.profile.subscribers ?? [];
     },
@@ -106,17 +122,21 @@ export default defineComponent({
       return this.applicationsFromMe.length + this.applicationsToMe.length;
     },
     haveSubscribeButton(): boolean {
-      return (this.userId != null && this.authUserId != null) && ( this.userId != this.authUserId)
-    }
+      return (
+        this.userIdPage != null &&
+        this.authUserId != null &&
+        this.userIdPage != this.authUserId
+      );
+    },
   },
   async created() {
     try {
       this.authUserId = await authService.getAuthorizedUserId();
       if (this.authUserId == null) throw new Error('User id undefined');
 
-      this.userId = this.$route.params.id as string;
+      this.userIdPage = this.$route.params.id as string;
 
-      this.profile = await this.getProfile(this.userId);
+      this.profile = await this.getProfile(this.userIdPage);
       console.log('this.profile');
       console.log(this.profile);
     } catch (err) {
@@ -124,13 +144,18 @@ export default defineComponent({
     }
   },
   methods: {
-    async getProfile(userId: string) {
-      return UserService.getProfile(userId);
+    async getProfile(userIdPage: string) {
+      return UserService.getProfile(userIdPage);
     },
     async follow() {
       // @ts-ignore
-      return UserService.follow(this.userId)
-    }
+      return UserService.follow(this.userIdPage);
+    },
+    async logout() {
+      authService.logout();
+      window.location.reload();
+      this.$router.push({ name: 'Main' });
+    },
   },
 });
 </script>
