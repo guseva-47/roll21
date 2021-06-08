@@ -61,7 +61,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/edit', name: 'edit', component: EditorExample },
     // { path: "/profile", redirect: { name: "Main" } }, // todo, по-хорошему, надо переводить а страницу пользователя, я думаю
     // { path: "/table", redirect: { name: "Main" } }, // todo
-    { path: '/login', name: 'Login', component: Login }, // todo настоящая страница логин
+    { path: '/login', name: 'Login', component: Login },
     { path: '/test', name: 'Dropdown', component: Dropdown },
 
     { path: '/test/tabletop', component: Tabletop },

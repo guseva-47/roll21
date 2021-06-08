@@ -12,40 +12,27 @@
     <div class="col p-0">
       <p>
         <router-link class="not-link" to="/profile/id">
-          {{player.user}}
+          {{ userName }}
         </router-link>
         <br />
         игрок
       </p>
     </div>
-    <div class="col-auto">
-      <!-- TODO выпадающее меню -->
-      <div class="dropdown">
-        <button
-          class="btn btn-outline-secondary"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          style="padding-inline: 3px"
-        >
-          ⁝
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Изменить роль</a></li>
-          <li><a class="dropdown-item" href="#">Удалить из игры</a></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import { IPlayer } from "../types/types.interfaces";
+import { defineComponent, PropType } from 'vue';
+import { IPlayer } from '../types/types.interfaces';
 
 export default defineComponent({
-  name: "PlayerRowBar",
-  props: { player: {type: Object as PropType<IPlayer>}}
+  name: 'PlayerRowBar',
+  props: { player: { type: Object as PropType<IPlayer> } },
+  computed: {
+    userName(): string {
+      return this.player?.user.slice(-4) ?? '';
+    },
+  },
 });
 </script>
 

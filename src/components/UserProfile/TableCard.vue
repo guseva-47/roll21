@@ -14,7 +14,7 @@
       <div class="position-relative">
         <h3 class="d-flex justify-content-between">
           <h3 class="list-inline-item">
-            {{ table.name }}; isOner={{ isOwner }}
+            {{ table.name }}
           </h3>
           <!-- router-link :to="{ name: 'TableProfId', params: { idTable: 123 }}" -->
           <router-link
@@ -24,9 +24,6 @@
             <i class="bi bi-arrow-right"></i>
           </router-link>
         </h3>
-        <p>
-          {{ table.aboutInfo }}
-        </p>
       </div>
       <router-link :to="tableGoRoute" class="btn btn-outline-success">
         Запустить <i class="bi bi-play play"></i>

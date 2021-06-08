@@ -18,6 +18,7 @@
           v-bind:rows="1"
           v-model="editedTable.name"
           ref="tableTitle"
+          placeholder="Название игры"
         />
         <h2
           v-else
@@ -101,7 +102,11 @@
         </div>
       </h3>
       <div class="accordion-body" v-if="isOpenAccordion">
-        <TableSetting :table="table" @deleteTable="deleteTable" @editModOn="editModOn" />
+        <TableSetting
+          :table="table"
+          @deleteTable="deleteTable"
+          @editModOn="editModOn"
+        />
       </div>
     </div>
   </div>
@@ -125,7 +130,7 @@ export default defineComponent({
   components: { EditableView, TableSetting },
   data() {
     return {
-      isOpenAccordion: true,
+      isOpenAccordion: false,
       isCreateMode: false,
       isEditMode: false,
 
@@ -137,8 +142,7 @@ export default defineComponent({
   async created() {
     const tableId = this.$route.params.idTable;
     this.isCreateMode = tableId == '-1';
-    if (this.isCreateMode)
-      this.table = { name: 'NEW', aboutInfo: 'NEW ab ou tI nfo' };
+    if (this.isCreateMode) this.table = { name: '', aboutInfo: '' };
     else {
       console.log('tableId = ', tableId);
       // получить от сервера

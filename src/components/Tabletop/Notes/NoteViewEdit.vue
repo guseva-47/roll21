@@ -96,6 +96,7 @@ import rfdc from 'rfdc';
 import { INote, NoteMode } from '@/components/types/types.interfaces';
 import EditableView from '@/components/utils/EditableView.vue';
 import Modal from '@/components/utils/Modal.vue';
+import authService from '@/services/auth.service';
 
 const clone = rfdc();
 
@@ -159,10 +160,8 @@ export default defineComponent({
       this.$emit('closeModal');
     },
     async editModOn() {
-      // todo расскомментировать
-      // const userId = await authService.getAuthorizedUserId();
-      // if (userId == null) return;
-      // if (userId != this.note.authorId) return;
+      const userId = await authService.getAuthorizedUserId();
+      if (userId == null) return;
       this.mode = NoteMode.EDIT;
     },
     editModOff() {
