@@ -25,7 +25,19 @@ class UserService {
         console.log('Follow request', res.status)
       })
       .catch(_ => {
-        throw new Error('The table info update failed.');
+        throw new Error('Follow req failed.');
+      });
+
+  }
+
+  async unfollow(userId: string) {
+    const authHeader = await authService.checkAccessTokenAndGetAuthHeader();
+
+    await api.post('/unsub', {id: userId}, { headers: authHeader }).then(res => {
+        console.log('Unfollow request', res.status)
+      })
+      .catch(_ => {
+        throw new Error('Unfollow req failed.');
       });
 
   }

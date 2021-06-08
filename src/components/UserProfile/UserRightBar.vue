@@ -9,15 +9,21 @@
         />
       </div>
       <div class="col">
-        <p>Иванов Иван</p>
-        <!-- <p>Комментарий заказчика</p> -->
+        <p>{{userName}}</p>
       </div>
       <button
-        v-if="haveSubscribeButton"
+        v-if="!isMyProfie && !isSubscriber"
         @click="follow"
         class="btn btn-outline-success btn-lg p-1 my-2"
       >
         Подписаться
+      </button>
+      <button
+        v-if="!isMyProfie && isSubscriber"
+        @click="unfollow"
+        class="btn btn-outline-secondary btn-lg p-1 my-2"
+      >
+        Отписаться
       </button>
     </div>
 
@@ -106,28 +112,28 @@ export default defineComponent({
     isMyProfie(): boolean {
       return this.userIdPage == this.authUserId;
     },
-    subscribers(): IUser[] {
+    subscribers(): string[] {
       return this.profile.subscribers ?? [];
     },
-    subscriptions(): IUser[] {
+    subscriptions(): string[] {
       return this.profile.subscriptions ?? [];
     },
-    applicationsFromMe(): IUser[] {
+    applicationsFromMe(): string[] {
       return this.profile.subscrReqsFromMe ?? [];
     },
-    applicationsToMe(): IUser[] {
+    applicationsToMe(): string[] {
       return this.profile.subscrReqsToMe ?? [];
     },
     applicationCount(): number {
       return this.applicationsFromMe.length + this.applicationsToMe.length;
     },
-    haveSubscribeButton(): boolean {
-      return (
-        this.userIdPage != null &&
-        this.authUserId != null &&
-        this.userIdPage != this.authUserId
-      );
+    isSubscriber(): boolean {
+      console.log('this.subscribers', this.subscribers)
+      return this.subscribers.includes(this.authUserId as string)
     },
+    userName(): string {
+      return this.userIdPage?.slice(-4) ?? ''
+    }
   },
   async created() {
     try {
@@ -148,8 +154,14 @@ export default defineComponent({
       return UserService.getProfile(userIdPage);
     },
     async follow() {
-      // @ts-ignore
-      return UserService.follow(this.userIdPage);
+      this.userIdPage = this.$route.params.id as string;
+      await UserService.follow(this.userIdPage);
+      this.profile = await this.getProfile(this.userIdPage);
+    },
+    async unfollow() {
+      this.userIdPage = this.$route.params.id as string;
+      await UserService.unfollow(this.userIdPage);
+      this.profile = await this.getProfile(this.userIdPage);
     },
     async logout() {
       authService.logout();
