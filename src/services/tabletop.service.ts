@@ -96,6 +96,21 @@ class TabletopService {
             });
         return tableData;
     }
+
+    async joinUsersToTable(idUsers: string[], idTable: string): Promise<ITableData> {
+        const authHeader = await authService.checkAccessTokenAndGetAuthHeader();
+
+        let tableData = {} as ITableData;
+        await api
+            .post('tabletops/' + idTable + '/join', idUsers, { headers: authHeader })
+            .then(res => {
+                tableData = res.data;
+            })
+            .catch(_ => {
+                throw new Error('Join users to table failed.');
+            });
+        return tableData;
+    }
 }
 
 export default new TabletopService();

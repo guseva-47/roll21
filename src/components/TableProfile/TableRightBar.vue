@@ -2,11 +2,15 @@
   <div class="row m-0 py-2">
     <router-link
       v-if="isOwner || isOnlyGamer"
-      :to="{ name: 'Go', params: { idTable: 'table._id' } }"
+      :to="{ name: 'Go', params: { idTable: table._id } }"
       class="btn btn-success btn-lg"
     >
       <i class="bi bi-play play"></i> Начать игру
     </router-link>
+    <button v-else @click="joinToTable" class="btn btn-success btn-lg">
+      <i class="bi bi-plus-lg play"></i> Присоединиться к игре
+    </button>
+
     <div class="person-block row mt-2">
       <div v-if="table.players.length < 1">
         <p>Игроки еще не добавлены</p>
@@ -51,13 +55,13 @@ export default defineComponent({
   async created() {
     const tableId = this.$route.params.idTable;
 
-    await this.getTable(tableId as string)
+    await this.getTable(tableId as string);
     const id = await authService.getAuthorizedUserId();
     this.userId = id == null ? '' : id;
   },
   computed: {
     tableId(): string {
-      console.log('computed')
+      console.log('computed');
       return this.$route.params.idTable as string;
     },
     isOwner(): boolean {
@@ -71,15 +75,15 @@ export default defineComponent({
     },
   },
   watch: {
-    tableId: function () {
-      console.log('wathc')
-      this.getTable(this.tableId)
+    tableId: function() {
+      console.log('wathc');
+      this.getTable(this.tableId);
     },
   },
   methods: {
     async getTable(tableId: string) {
-      if(!tableId) return;
-      console.log('getTable')
+      if (!tableId) return;
+      console.log('getTable');
       if (tableId != '-1') {
         try {
           this.table = await tabletopService.getTabletop(tableId as string);
@@ -89,6 +93,30 @@ export default defineComponent({
           console.log('Error get table:', err);
           this.$router.push({ name: 'Login' });
         }
+      }
+      return this.table;
+    },
+
+    async joinToTable() {
+      try {
+        const table = this.getTable(this.tableId);
+        const id = authService.getAuthorizedUserId();
+        await Promise.all([table, id]).then(values => {
+          // @ts-ignore
+          this.userId = values[1];
+        });
+
+        if (this.isOwner || this.isOnlyGamer) return;
+
+        if (!this.table._id) return;
+
+        this.table = await tabletopService.joinUsersToTable(
+          [this.userId],
+          this.table._id,
+        );
+      } catch (err) {
+        console.log('Error save table:', err);
+        this.$router.push({ name: 'Login' });
       }
     },
   },

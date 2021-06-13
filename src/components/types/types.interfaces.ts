@@ -29,10 +29,10 @@ export interface IPlayer {
 export interface IUser {
     _id: string;
     email: string;
-    subscribers?: IUser[];
-    subscriptions?: IUser[];
-    subscrReqsToMe?: IUser[];
-    subscrReqsFromMe?: IUser[];
+    subscribers?: string[];
+    subscriptions?: string[];
+    subscrReqsToMe?: string[];
+    subscrReqsFromMe?: string[];
 }
 
 export enum NoteSecureMode {

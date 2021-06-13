@@ -2,7 +2,7 @@
   <div class="row">
     <div class="row m-0 py-2">
       <router-link
-        v-if="isAuth"
+        v-if="isAuth && isMyProfie"
         :to="{ name: 'TableProfId', params: { idTable: '-1' } }"
         class="btn btn-outline-success btn-lg p-1"
       >
@@ -10,33 +10,38 @@
       </router-link>
     </div>
     <div v-if="!isAuth"></div>
-    <div v-else-if="!haveTables">
+    <div v-else-if="!haveTables && isMyProfie">
       <p>
         Игровых столов пока нет, они появятся здесь в списке, когда вы создадите
         их, или подключитесь к столам других игроков.
       </p>
     </div>
+    <div v-else-if="!haveTables && !isMyProfie">
+      <p>
+        Игровых столов пока нет, или они не доступны для просмотра.
+      </p>
+    </div>
     <div v-else>
-      <TableCard 
+      <TableCard
         v-for="(table, i) in allTabletops"
         :key="i"
         :table="table"
-        :userId="userId"
+        :userId="authUserId"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import authService from "@/services/auth.service";
-import tabletopService from "@/services/tabletop.service";
-import { defineComponent } from "vue";
-import { ITableData } from "../types/types.interfaces";
+import authService from '@/services/auth.service';
+import tabletopService from '@/services/tabletop.service';
+import { defineComponent } from 'vue';
+import { ITableData } from '../types/types.interfaces';
 
-import TableCard from "./TableCard.vue";
+import TableCard from './TableCard.vue';
 
 export default defineComponent({
-  name: "Profile",
+  name: 'Profile',
   components: {
     // eslint-disable-next-line vue/no-unused-components
     TableCard,
@@ -44,7 +49,8 @@ export default defineComponent({
   data() {
     return {
       allTabletops: [] as ITableData[],
-      userId: "",
+      userIdPage: '' as string | null,
+      authUserId: '' as string | null,
     };
   },
   computed: {
@@ -52,20 +58,22 @@ export default defineComponent({
       return this.allTabletops.length > 0;
     },
     isAuth(): boolean {
-      return this.userId != null;
+      return this.authUserId != null;
     },
-    // isOwner(ownerId): boolean {
-    //   console.log('this.userId', this.userId);
-    //   console.log('ownerId', ownerId);
-    //   return this.userId == ownerId;
-    // }
+    isMyProfie(): boolean {
+      return this.userIdPage == this.authUserId;
+    },
   },
   async created() {
+    this.userIdPage = this.$route.params.id as string;
+
     // @ts-ignore
-    this.userId = await authService.getAuthorizedUserId();
-    if (this.userId != null) {
-      this.allTabletops = await tabletopService.getAllTabletops(this.userId); // TODO
-      console.log(this.allTabletops)
+    this.authUserId = await authService.getAuthorizedUserId();
+    if (this.authUserId != null) {
+      this.allTabletops = await tabletopService.getAllTabletops(
+        this.userIdPage,
+      );
+      console.log(this.allTabletops);
     } else this.$router.push({ name: 'Login' });
   },
 });
