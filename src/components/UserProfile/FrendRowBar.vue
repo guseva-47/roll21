@@ -26,7 +26,7 @@ export default defineComponent({
   props: { user: {type: String, required: true}},
   computed: {
     userName(): string {
-      return this.user.slice(-4) ?? ''
+      return (this.user.length > 4) ? this.user.slice(-4) : this.user;
     }
   },
 });

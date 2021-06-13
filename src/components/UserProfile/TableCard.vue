@@ -40,7 +40,7 @@ export default defineComponent({
   name: "TableCard",
   props: {
     table: { type: Object as PropType<ITableData>, required: true },
-    userId: { type: String, require: true },
+    userId: { type: String, required: true },
   },
   computed: {
     // gameInfo(): string {

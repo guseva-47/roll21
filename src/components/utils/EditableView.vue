@@ -5,7 +5,7 @@
     @focus="edit()"
     fixedHeight="true"
   />
-  <RichTextEditor v-else v-model:content="content" :focused="true" />
+  <RichTextEditor v-else :content="content" :focused="true" />
 </template>
 
 <script lang="ts">

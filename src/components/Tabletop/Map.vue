@@ -57,10 +57,6 @@ export default defineComponent({
       setTimeout(() => {
         pixiApp.value!.addToken(token);
       }, 3000);
-
-      setInterval(() => {
-        tokens[0].x++;
-      }, 100)
     });
 
     onUnmounted(() => {
