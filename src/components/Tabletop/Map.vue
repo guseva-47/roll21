@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
+// @ts-ignore
 import IGraphicApp from '@/graphic/graphicApp/IGraphicApp';
 import PixiApp from '@/graphic/graphicApp/PixiApp';
 import BasicScene from '@/graphic/scene/BasicScene';
@@ -74,7 +75,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .map {
-  background-color: #002000;
-  min-height: 85vh;
+  background-color: #222222;
+  min-height: 80vh;
 }
 </style>

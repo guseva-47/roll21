@@ -53,7 +53,7 @@ export default class BasicScene implements IPrivateScene {
 
         // контейнер со слоями
         const layerContainer = new PIXI.Graphics()
-            .beginFill(0x002000)
+            .beginFill(0x222222)
             .drawRect(0, 0, width, height);
 
         // tokens' collection

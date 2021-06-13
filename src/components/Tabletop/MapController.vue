@@ -1,5 +1,6 @@
 <template>
   <div class="toolBar">
+    <!-- Табы, сначала вкладки с картами, затем одна вкладка с добавлением -->
     <ul class="nav nav-tabs small tool-bar-nav">
       <li v-for="i in mapCount - 1" :key="i" class="nav-item not-link">
         <button
@@ -21,8 +22,8 @@
       </li>
     </ul>
 
-    <div v-if="activeMapTab == 3">
-      
+    <div v-if="activeMapTab == 1">
+      <Map :columnCellsAmount="10" :rowCellsAmount="13" />
     </div>
     <div v-if="activeMapTab == mapCount">
       <NewSceneForm :createMap="createMap" />
@@ -38,15 +39,17 @@ import { defineComponent } from 'vue';
 
 import NewSceneForm from './NewSceneForm.vue';
 import { INewMapParam } from '@/components/types/types.interfaces';
+import Map from './Map.vue'
 
 export default defineComponent({
   name: 'MapController',
   components: {
     NewSceneForm,
+    Map
   },
   data() {
     return {
-      mapCount: 1,
+      mapCount: 2,
       activeMapTab: 1,
     };
   },

@@ -27,7 +27,7 @@ export default class PixiApp implements IGraphicApp {
         this.root = root;
 
         this.app = new PIXI.Application({
-            backgroundColor: 0x002000,
+            backgroundColor: 0x222222,
             width,
             height,
         });
